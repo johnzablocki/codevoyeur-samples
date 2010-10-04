@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Mapstraction View Component Demo</title>
+    
+    <script type="text/javascript" src="http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=YOUR_API_KEY_HERE"></script>   
+    <script language="javascript" type="text/javascript" src="$SiteRoot/Content/Scripts/Mapstraction.js"></script>    
+</head>
+<body>
+
+<div id="mapstraction" style="width:600px;height:400px;">
+    #blockcomponent(MapstractionComponent with "Provider=yahoo" "CenterPoint=$CenterPoint" "NearbyPoints=$NearbyPoints")
+    
+    #CenterPointBubbleHtml
+    var centerPointBubbleHtml = '<strong>$CenterPoint.City</strong>';
+    #end
+    
+    #NearbyPointBubbleHtml
+    var nearbyPointBubbleHtml = '<a href=\'javascript:alert(\"You clicked on $NearbyPoint.City!\");\'>This link about $NearbyPoint.City does not do anything.</a>';        
+    #end
+    
+    #end
+</div>
+
+</body>
+</html>
