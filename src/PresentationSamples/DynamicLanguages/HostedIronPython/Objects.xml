@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects>
+  <object name="AlbumLister" static="true">
+instance = AlbumLister()
+instance.Finder = reference("AlbumFinder")
+  </object>
+  <object name="AlbumFinder" static="true">
+instance = AlbumFinder("Albums.xml")
+  </object>  
+</objects>

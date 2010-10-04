@@ -1,0 +1,39 @@
+﻿<div style="background-color:#c0c0c0;font-family:Arial;
+        font-size:15px;padding:10px;
+        text-align:center;
+        margin-left:20%;margin-right:20%;" 
+    id="welcome">
+    
+    <form action="$SiteRoot/Home/Search.aspx">
+    <div>$Form.LabelFor("city", "City: ") $Form.TextField("city")</div>
+    <div>$Form.LabelFor("state", "State: ") $Form.TextField("state")</div>
+    <div style="font-size:.8em;">(2 characters)</div>
+    
+    <div style="margin:.5em;">-- or --</div>
+    
+    <div>$Form.LabelFor("zip", "Zip Code: ") $Form.TextField("zip")</div>   
+    <div>$Form.Submit("Find Locations")</div>
+    </form>
+        
+    <div id="locations" style="display:none;background-color:Bisque;padding:1em;margin:1em;">
+    #foreach($location in $Locations)
+        #beforeall
+            <span style="font-weight:bold">
+                Locations within 5 miles of $CenterPoint.City, $CenterPoint.State
+            </span>
+        #nodata
+            No data found or no search performed.    
+        #each
+        <div style="font-size:.8em;">
+            $location.City, $location.State
+        </div>
+    #end    
+    </div>
+    
+        
+</div>
+
+
+<script language="javascript">
+    jQuery("#locations").fadeIn("slow");
+</script>

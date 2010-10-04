@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<rules>
+  <rule name="artist_name_length" message="Artist name must contain at least 3 characters">
+    <![CDATA[result = property_value != None and len(property_value) >= 3]]>
+  </rule>
+  <rule name="title_length" message="Title name must contain at least 1 character">
+    <![CDATA[result = property_value != None and len(property_value) >= 2]]>
+  </rule>
+  <rule name="starts_uppercase_or_digit" message="Artist name must start with upper case letter or digit">
+result = Char.IsUpper(property_value[0]) or Char.IsDigit(property_value[0])
+  </rule>
+  <rule name="non_empty_set" message="Album must have at least one track">
+result = len([track for track in property_value if len(track) > 0]) > 0
+  </rule>
+</rules>

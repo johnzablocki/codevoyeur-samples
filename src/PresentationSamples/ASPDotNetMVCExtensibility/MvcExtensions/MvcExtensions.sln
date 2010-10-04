@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcExtensions", "MvcExtensions.csproj", "{3D65A06E-44AF-48D4-96F0-9FFDC95D6803}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCContribSamples", "..\MVCContribSamples\MVCContribSamples.csproj", "{A90C3E2D-0939-4FD9-B64C-C0F828A5F159}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D65A06E-44AF-48D4-96F0-9FFDC95D6803}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D65A06E-44AF-48D4-96F0-9FFDC95D6803}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D65A06E-44AF-48D4-96F0-9FFDC95D6803}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D65A06E-44AF-48D4-96F0-9FFDC95D6803}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A90C3E2D-0939-4FD9-B64C-C0F828A5F159}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A90C3E2D-0939-4FD9-B64C-C0F828A5F159}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A90C3E2D-0939-4FD9-B64C-C0F828A5F159}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A90C3E2D-0939-4FD9-B64C-C0F828A5F159}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

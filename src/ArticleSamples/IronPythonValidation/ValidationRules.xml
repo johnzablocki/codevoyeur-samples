@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<rules>
+  <rule name="first_name_length" message="First name must be at least 3 characters">
+    <![CDATA[result = property_value != None and len(property_value) >= 3]]>
+  </rule>
+  <rule name="last_name_length" message="Last name must be at least 2 characters">
+    <![CDATA[result = property_value != None and len(property_value) >= 2]]>
+  </rule>
+  <rule name="password_contains_digits" message="Password must contain at least one number">
+def word_contains_digit(word):
+  for char in word:    
+    if Char.IsDigit(char):
+      return True
+  return False
+
+result = word_contains_digit(property_value)
+  </rule>
+  <rule name="is_valid_birthdate" message="Birthday must be a date prior to today">    
+    result = property_value.CompareTo(DateTime.Now) == -1
+  </rule>
+</rules>

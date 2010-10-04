@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="IronPythonInversionOfControl">
+</Property><Property Name="Solution File" Value="C:\Dev\CodeVoyeur\trunk\IronPythonInversionOfControl\IronPythonInversionOfControl.sln">
+</Property><Property Name="Date" Value="Tuesday, August 03, 2010">
+</Property><Property Name="Time" Value="14:34 PM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="IronPythonInversionOfControl.sln" Description="File successfully backed up as C:\Dev\CodeVoyeur\trunk\IronPythonInversionOfControl\Backup\IronPythonInversionOfControl.sln">
+</Event><Event ErrorLevel="0" Project="IronPythonInversionOfControl" Source="IronPythonInversionOfControl.csproj" Description="Project file successfully backed up as C:\Dev\CodeVoyeur\trunk\IronPythonInversionOfControl\Backup\IronPythonInversionOfControl.csproj">
+</Event><Event ErrorLevel="0" Project="IronPythonInversionOfControl" Source="Core\ContainedObject.cs" Description="File successfully backed up as C:\Dev\CodeVoyeur\trunk\IronPythonInversionOfControl\Backup\Core\ContainedObject.cs">
+</Event><Event ErrorLevel="0" Project="IronPythonInversionOfControl" Source="Core\ContainerBase.cs" Description="File successfully backed up as C:\Dev\CodeVoyeur\trunk\IronPythonInversionOfControl\Backup\Core\ContainerBase.cs">
+</Event><Event ErrorLevel="0" Project="IronPythonInversionOfControl" Source="Core\XmlContainer.cs" Description="File successfully backed up as C:\Dev\CodeVoyeur\trunk\IronPythonInversionOfControl\Backup\Core\XmlContainer.cs">
+</Event><Event ErrorLevel="0" Project="IronPythonInversionOfControl" Source="Model\IAlbumFinder.cs" Description="File successfully backed up as C:\Dev\CodeVoyeur\trunk\IronPythonInversionOfControl\Backup\Model\IAlbumFinder.cs">
+</Event><Event ErrorLevel="0" Project="IronPythonInversionOfControl" Source="Model\Album.cs" Description="File successfully backed up as C:\Dev\CodeVoyeur\trunk\IronPythonInversionOfControl\Backup\Model\Album.cs">
+</Event><Event ErrorLevel="0" Project="IronPythonInversionOfControl" Source="Model\AlbumLister.cs" Description="File successfully backed up as C:\Dev\CodeVoyeur\trunk\IronPythonInversionOfControl\Backup\Model\AlbumLister.cs">
+</Event><Event ErrorLevel="0" Project="IronPythonInversionOfControl" Source="Model\ILogger.cs" Description="File successfully backed up as C:\Dev\CodeVoyeur\trunk\IronPythonInversionOfControl\Backup\Model\ILogger.cs">
+</Event><Event ErrorLevel="0" Project="IronPythonInversionOfControl" Source="Model\Logger.cs" Description="File successfully backed up as C:\Dev\CodeVoyeur\trunk\IronPythonInversionOfControl\Backup\Model\Logger.cs">
+</Event><Event ErrorLevel="0" Project="IronPythonInversionOfControl" Source="Model\XmlAlbumFinder.cs" Description="File successfully backed up as C:\Dev\CodeVoyeur\trunk\IronPythonInversionOfControl\Backup\Model\XmlAlbumFinder.cs">
+</Event><Event ErrorLevel="0" Project="IronPythonInversionOfControl" Source="Program.cs" Description="File successfully backed up as C:\Dev\CodeVoyeur\trunk\IronPythonInversionOfControl\Backup\Program.cs">
+</Event><Event ErrorLevel="0" Project="IronPythonInversionOfControl" Source="Properties\AssemblyInfo.cs" Description="File successfully backed up as C:\Dev\CodeVoyeur\trunk\IronPythonInversionOfControl\Backup\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="IronPythonInversionOfControl" Source="Albums.xml" Description="File successfully backed up as C:\Dev\CodeVoyeur\trunk\IronPythonInversionOfControl\Backup\Albums.xml">
+</Event><Event ErrorLevel="0" Project="IronPythonInversionOfControl" Source="Objects.xml" Description="File successfully backed up as C:\Dev\CodeVoyeur\trunk\IronPythonInversionOfControl\Backup\Objects.xml">
+</Event><Event ErrorLevel="0" Project="IronPythonInversionOfControl" Source="IronPythonInversionOfControl.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="IronPythonInversionOfControl" Source="IronPythonInversionOfControl.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="IronPythonInversionOfControl.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="IronPythonInversionOfControl.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="IronPythonInversionOfControl" Source="IronPythonInversionOfControl.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

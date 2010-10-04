@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="IronPythonMVCControllerFactory">
+</Property><Property Name="Solution File" Value="C:\Dev\CodeVoyeur\trunk\IronPythonMVCControllerFactory\IronPythonMVCControllerFactory.sln">
+</Property><Property Name="Date" Value="Tuesday, August 03, 2010">
+</Property><Property Name="Time" Value="14:37 PM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="IronPythonMVCControllerFactory.sln" Description="File successfully backed up as C:\Dev\CodeVoyeur\trunk\IronPythonMVCControllerFactory\Backup\IronPythonMVCControllerFactory.sln">
+</Event><Event ErrorLevel="2" Project="IronPythonMVCControllerFactory" Source="IronPythonMVCControllerFactory\IronPythonMVCControllerFactory.csproj" Description="Unable to open project file to perform upgrade.  ">
+</Event><Event ErrorLevel="0" Project="" Source="IronPythonMVCControllerFactory.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="IronPythonMVCControllerFactory.sln" Description="Converted">
+</Event></UpgradeLog>
