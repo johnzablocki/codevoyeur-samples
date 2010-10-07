@@ -6,17 +6,21 @@ using Microsoft.Scripting.Hosting;
 
 namespace TipsAndTechniques {
     class Program {
+        
+        private const string PYTHON_FILE = "scripts\\hostedscript.py";
+        
         static void Main(string[] args) {
             
             try {
+                
 
                 ScriptRuntimeSetup setup = ScriptRuntimeSetup.ReadConfiguration();
                 ScriptRuntime runtime = new ScriptRuntime(setup);
                 runtime.GetEngine("Python").Execute("print \"Hello, Hosted Script World!\"");
-                //runtime.ExecuteFile("scripts\\hostedscript.py");                
+                //runtime.ExecuteFile(PYTHON_FILE);                
 
-                //ScriptController sc = new ScriptController("scripts\\hostedscript.py");                
-                //sc.SetData("name", "John Zablocki");                
+                //ScriptScope scope = runtime.GetEngine("Python").CreateScope();
+                //scope.SetVariable("name", "John Zablocki");
                 #region func
                 //Func<string, string> reverse = (s) => {
                 //        string reversed = "";
@@ -25,40 +29,13 @@ namespace TipsAndTechniques {
                 //        }
                 //        return reversed;
                 //    };                
-                //sc.SetData("reverse", reverse);
+                //scope.SetVariable("reverse", reverse);
                 #endregion                
-                //sc.RunScript();
-
+                //runtime.GetEngine("Python").ExecuteFile(PYTHON_FILE, scope);                
 
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }
-        }
-
-        #region ScriptController
-        public class ScriptController {
-
-            private static ScriptRuntime _runtime;
-            private string _fileName = "";
-
-            static ScriptController() {
-                ScriptRuntimeSetup setup = ScriptRuntimeSetup.ReadConfiguration();
-                _runtime = new ScriptRuntime(setup);
-            }
-
-            public ScriptController(string fileName) {
-                _fileName = fileName;
-            }
-
-            public void RunScript() {
-                _runtime.GetEngine("IronPython").ExecuteFile(_fileName, _runtime.Globals);
-            }
-
-            public void SetData(string name, object data) {
-                _runtime.Globals.SetVariable(name, data);
-            }
-
-        } 
-        #endregion
+        }       
     }
 }

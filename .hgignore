@@ -5,7 +5,6 @@ syntax: glob
 thumbs.db
 
 #-- Directories
-App_Data/*
 bin/
 obj/
 _ReSharper.*/

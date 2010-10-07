@@ -2,7 +2,7 @@
 import System.IO
 import Boo.Lang
 
-directory = "C:\\$Code\\Temp\\Env"
+directory = "C:\\Dev\\Temp\\Env"
 
 file_path = Path.Combine(directory, "vendor-file.txt")
 
