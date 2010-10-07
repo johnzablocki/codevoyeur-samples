@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<purchases>
+  <purchase id="12345">
+    <product_id>IPID_8675309</product_id>
+    <product_description>Vegan with a Vengeance : Over 150 Delicious, Cheap, Animal-Free Recipes That Rock</product_description>
+    <category>BOOKS</category>
+    <price>12.21</price>
+    <state>NY</state>
+    <city>New York</city>
+  </purchase>
+  <purchase id="23456">
+    <product_id>IPID_5248123</product_id>
+    <product_description>Gap Mens Medium Authentic Low Rise Boot Fit Jeans</product_description>
+    <category>CLOTHING</category>
+    <price>54.50</price>
+    <state>CT</state>
+    <city>Bridgeport</city>
+  </purchase>
+  <purchase id="23456">
+    <product_id>IPID_246830</product_id>
+    <product_description>Gap The Vintage Khaki (Slim Fit)</product_description>
+    <category>CLOTHING</category>
+    <price>49.50</price>
+    <state>CT</state>
+    <city>Bridgeport</city>
+  </purchase>
+  <purchase id="34567">
+    <product_id>IPID_99884455</product_id>
+    <product_description>Vegetarian Times (1-year auto-renewal)</product_description>
+    <category>SUBSCRIPTIONS</category>
+    <price>12.00</price>
+    <state>MA</state>
+    <city>Cambridge</city>
+  </purchase>
+  <purchase id="45678">
+    <product_id>IPID_99884455</product_id>
+    <product_description>Vegetarian Times (1-year auto-renewal)</product_description>
+    <category>SUBSCRIPTIONS</category>
+    <price>12.00</price>
+    <state>CT</state>
+    <city>Hartford</city>
+  </purchase>
+   <purchase id="56789">
+    <product_id>IPID_985642</product_id>
+    <product_description></product_description>
+    <category>Gap The Vintage Khaki (Slim Fit)</category>
+    <price>49.50</price>
+    <state>NY</state>
+    <city>New York</city>
+  </purchase>
+</purchases>
