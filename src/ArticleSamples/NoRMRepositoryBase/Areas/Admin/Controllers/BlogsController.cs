@@ -21,7 +21,8 @@ namespace NoRMRepositoryBase.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            return View(_repository.FindAll());
+            return View(_repository.Find(new { Author = "John Zablocki" }));
+            //return View(_repository.FindAll());
         }
 
         //
