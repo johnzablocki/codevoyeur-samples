@@ -10,15 +10,15 @@ namespace NoRMQuickStart {
 
     class Program {
 
-        private const string CONN_STRING = "mongodb://localhost/test";
+        private const string CONN_STRING = "mongodb://localhost/CodeCamp";
 
         public static void Main() {
 
             try {
 
-                //doSetup();
+                doSetup();
 
-                //doCRUD();
+                doCRUD();
 
                 //doMoreCRUD();
 
@@ -46,7 +46,7 @@ namespace NoRMQuickStart {
                 var artist = new Artist() { Name = "BadLands" };
 
                 //Inserting a document into a typed collection
-                mongo.Database.GetCollection<Artist>("Artists").Insert(artist);
+                mongo.Database.GetCollection<Artist>("Artists").Save(artist);
 
                 //Updating (replacing) a document in a typed collection
                 artist.Name = "Badlands";
