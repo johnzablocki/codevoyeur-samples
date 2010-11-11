@@ -6,14 +6,15 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{66BD1AF1-61F8-487D-8E6E-EC526BFEA959}</ProjectGuid>
+    <ProjectGuid>{48CB6A47-A027-46BF-B4EF-7A9EA157B6EF}</ProjectGuid>
     <ProjectTypeGuids>{F85E285D-A4E0-4152-9332-AB1D724D3325};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NoRMRepositoryBase</RootNamespace>
-    <AssemblyName>NoRMRepositoryBase</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <RootNamespace>MongoDBRepositoryBase</RootNamespace>
+    <AssemblyName>MongoDBRepositoryBase</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,11 +34,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Inflector.Net">
-      <HintPath>..\..\..\lib\Inflector.Net.dll</HintPath>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\..\..\lib\MongoDB.Bson.dll</HintPath>
     </Reference>
-    <Reference Include="Norm">
-      <HintPath>..\..\..\lib\Norm.dll</HintPath>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\..\..\lib\MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -75,8 +76,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Models\BlogRepository.cs" />
     <Compile Include="Models\MongoDBSettings.cs" />
-    <Compile Include="Models\NoRMModelBase.cs" />
-    <Compile Include="Models\NoRMRepositoryBase.cs" />
+    <Compile Include="Models\MongoDBModelBase.cs" />
+    <Compile Include="Models\MongoDBRepositoryBase.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -144,7 +145,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>39495</DevelopmentServerPort>
+          <DevelopmentServerPort>7540</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
