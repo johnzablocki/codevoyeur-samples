@@ -20,60 +20,45 @@ namespace MongoDBRepositoryBase.Models {
             _mongoDatabase = _mongoServer.GetDatabase(settings.Database);
         }
 
-
         public virtual void Create(T instance) {
-
-            _mongoDatabase.GetCollection<T>(_Collection).Insert(instance);            
-            
-        }
-
-        public virtual void Create<Y>(Y instance, string collection) {
-
-            _mongoDatabase.GetCollection<Y>(collection).Insert(instance);
-        }
-
-        public virtual void Save<Y>(Y instance, string collection) {
-
-            _mongoDatabase.GetCollection<Y>(collection).Save(instance);
+            _mongoDatabase.GetCollection<T>(_Collection).Insert(instance);                        
         }
 
         public virtual void Save(T instance) {
             _mongoDatabase.GetCollection<T>(_Collection).Save(instance);
-        }        
-
-        public void Update(object spec, object newValues) {
-            _mongoDatabase.GetCollection<T>(_Collection).Update(spec, newValues);
         }
 
-        public void UpdateAll(object spec, object newValues, bool upsert = false) {
-            //using (Mongo mongo = Mongo.Create(Settings.ConnectionString)) {
-            //    mongo.GetCollection<T>(_Collection).Update(spec, newValues, true, upsert);
-            //}
+        public void Update(BsonDocument spec, BsonDocument newValues, bool upsert = false, UpdateFlags flags = UpdateFlags.None) {
+
+            if (upsert) {
+                _mongoDatabase.GetCollection<T>(_Collection).Update(spec, newValues, UpdateFlags.Upsert | flags);
+            } else {
+                _mongoDatabase.GetCollection<T>(_Collection).Update(spec, newValues, flags);
+            }
+        }
+
+        public void UpdateAll(BsonDocument spec, BsonDocument newValues, bool upsert = false) {
+            
+            if (upsert) {
+                Update(spec, newValues, true, UpdateFlags.Multi);
+            } else {
+                Update(spec, newValues, false, UpdateFlags.Multi);
+            }
+            
         }        
 
-        public virtual T FindById(ObjectId id) {            
-            var query = Query.EQ("_id", id);
-            return _mongoDatabase.GetCollection<T>(_Collection).FindOne(query);
+        public virtual T FindById(ObjectId id) {
+            return _mongoDatabase.GetCollection<T>(_Collection).FindOne(Query.EQ("_id", id));            
         }
 
         public virtual T FindById(string id) {
             return FindById(new ObjectId(id));
         }
 
-        public virtual T FindOne(object spec) {
-            
+        public virtual T FindOne(BsonDocument spec) {            
             return _mongoDatabase.GetCollection<T>(_Collection).FindOne(spec);
         }
-
-        public virtual T FindOne(Func<T, bool> func) {
-
-            throw new NotImplementedException();
-        }
-
-        public virtual Y FindOne<Y>(Func<Y, bool> func, string collection) {
-            throw new NotImplementedException();            
-        }
-
+                
         public virtual IEnumerable<T> Find(object spec) {
             
             return _mongoDatabase.GetCollection<T>(_Collection).Find(spec);
@@ -83,20 +68,10 @@ namespace MongoDBRepositoryBase.Models {
 
             return _mongoDatabase.GetCollection<T>(_Collection).FindAll().Where(func);
         }
-
-        public virtual IEnumerable<Y> Find<Y>(Func<Y, bool> func, string collection) {
-
-            return _mongoDatabase.GetCollection<Y>(collection).FindAll().Where(func);
-        }
-
-
+          
+        
         public virtual IEnumerable<T> FindAll() {
             return _mongoDatabase.GetCollection<T>(_Collection).FindAll();
-        }
-
-        public virtual IEnumerable<Y> FindAll<Y>(string collection) {
-            return _mongoDatabase.GetCollection<Y>(collection).FindAll();
-
         }
 
         public virtual void Remove(object spec) {
@@ -111,18 +86,17 @@ namespace MongoDBRepositoryBase.Models {
             Remove(new ObjectId(id));
         }
 
-        public virtual void Remove<Y>(Y instance, string collection) {
-            throw new NotImplementedException();
-        }
-
         public virtual void Remove(ObjectId id) {
             _mongoDatabase.GetCollection<T>(_Collection).Remove(Query.EQ("_id", id));
         }
 
-        public IEnumerable<YMappedType> MapReduce<YMappedType>(string map, string reduce, string outputCollectioName) {
+        public IEnumerable<TMapReduceType> MapReduce<TMapReduceType>(BsonJavaScript map, BsonJavaScript reduce, string outputCollectioName) {
+                              
+            var result = _mongoDatabase.GetCollection<T>(_Collection)
+                .MapReduce(map, reduce, MapReduceOptions.SetKeepTemp(true).SetOutput(outputCollectioName));
+            var collection = _mongoDatabase.GetCollection<TMapReduceType>(result.ResultCollectionName);
 
-
-            throw new NotImplementedException();
+            return collection.FindAll();
 
         }
     }

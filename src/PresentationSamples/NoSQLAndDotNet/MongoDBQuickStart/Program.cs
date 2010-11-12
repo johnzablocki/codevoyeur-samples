@@ -116,7 +116,6 @@ namespace MongoDBQuickStart {
                                 return count;
                             }";
 
-            //MapReduce class is responsible for calling mapreduce command                                   
             var result = _mongoDatabase.GetCollection<Artist>(COLLECTION).MapReduce(map, reduce, MapReduceOptions.SetKeepTemp(true).SetOutput("Tags"));
 
             var collection = _mongoDatabase.GetCollection<Tag>(result.ResultCollectionName);
