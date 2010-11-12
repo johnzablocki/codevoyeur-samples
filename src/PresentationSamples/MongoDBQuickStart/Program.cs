@@ -35,7 +35,7 @@ namespace MongoDBQuickStart {
 
                 doMapReduce();
 
-                //doLINQ();
+                doQueries();
 
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
@@ -118,47 +118,29 @@ namespace MongoDBQuickStart {
 
             //MapReduce class is responsible for calling mapreduce command                                   
             var result = _mongoDatabase.GetCollection<Artist>(COLLECTION).MapReduce(map, reduce, MapReduceOptions.SetKeepTemp(true).SetOutput("Tags"));
-            
+
             var collection = _mongoDatabase.GetCollection<Tag>(result.ResultCollectionName);
             Console.WriteLine("Tag count: " + collection.Count());
 
-            //}
         }
 
-        //        private static void doLINQ() {
+        private static void doQueries() {
+            
+            var artists = _mongoDatabase.GetCollection<Artist>(COLLECTION);
+            
+            //Find items in typed collection
+            var artistsStartingWithThe = artists.Find(Query.Matches("Name", new Regex("the", RegexOptions.IgnoreCase)));
+            Console.WriteLine("First artist starting with The: " + artistsStartingWithThe.First().Name);
 
-        //            using (IMongo mongo = Mongo.Create(CONN_STRING)) {
+            //Find artists without pulling back nested collections
+            var artistsWithDecInTheName = artists.Find(Query.Matches("Name", "Dec")).SetFields("Name");
+            Console.WriteLine("First artist with dec in name: " + artistsWithDecInTheName.First().Name);
 
-        //                //LINQ provider exposed via AsQueryable method of MongoCollection
-        //                var artists = mongo.Database.GetCollection<Artist>("Artists").AsQueryable();
+            ////Find artists with a given tag
+            var artistsWithIndieTag = artists.Find(Query.In("Tags", "Indie"));
+            Console.WriteLine("First artist with indie tag: " + artistsWithIndieTag.First().Name);
+        }
 
-        //                //Find items in typed collection
-        //                var artistsStartingWithThe = from a in mongo.Database.GetCollection<Artist>("Artists").AsQueryable()
-        //                                             where a.Name.StartsWith("The")
-        //                                             select a;
-        //                Console.WriteLine("First artist starting with The: " + artistsStartingWithThe.First().Name);
-
-        //                //Find artists without pulling back nested collections
-        //                var artistsWithDecInTheName =
-        //                    from a in mongo.Database.GetCollection<Artist>("Artists").AsQueryable()
-        //                    where Regex.IsMatch(a.Name, "dec", RegexOptions.IgnoreCase)
-        //                    select new { Name = a.Name };
-        //                Console.WriteLine("First artist with dec in name: " + artistsWithDecInTheName.First().Name);
-
-        //                //Find artists with a given tag
-        //                var artistsWithIndieTag = mongo.Database.GetCollection<Artist>("Artists")
-        //                                .AsQueryable().Where(a => a.Tags.Any(s => s == "Indie"));
-        //                Console.WriteLine("First artist with indie tag: " + artistsWithIndieTag.First().Name);
-        //            }
-        //        }
-
-        //        private static void doSequence() {
-
-        //            using (IMongo mongo = Mongo.Create(CONN_STRING)) {
-
-        //            }
-
-        //        }
     }
 
 }
