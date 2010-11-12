@@ -6,7 +6,7 @@ using Norm;
 using Norm.Responses;
 using System.Text.RegularExpressions;
 
-namespace NoRMQuickStart {   
+namespace NoRMQuickStart {
 
     class Program {
 
@@ -20,56 +20,57 @@ namespace NoRMQuickStart {
 
                 doCRUD();
 
-                //doMoreCRUD();
+                doMoreCRUD();
 
-                //doMapReduce();
+                doMapReduce();
 
-                //doLINQ();
+                doLINQ();
 
-                new ProductRepository().Create(new Product() { Name = "Fender Stratocaster" });
-                
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }
         }
 
         private static void doSetup() {
-            using (Mongo mongo = Mongo.Create(CONN_STRING)) {
-                mongo.Database.DropCollection("Artists");
+            using (IMongo mongo = Mongo.Create(CONN_STRING)) {
+
+                if (mongo.Database.GetCollection("Artists").Count() != 0) {
+                    mongo.Database.DropCollection("Artists");
+                }
             }
         }
 
         private static void doCRUD() {
             //connect to test database on localhost
-            using (Mongo mongo = Mongo.Create(CONN_STRING)) {
-                                
-                var artist = new Artist() { Name = "BadLands" };
+            using (IMongo mongo = Mongo.Create(CONN_STRING)) {
+
+                var artist = new Artist() { Name = "The Decembrists" };
 
                 //Inserting a document into a typed collection
                 mongo.Database.GetCollection<Artist>("Artists").Save(artist);
 
                 //Updating (replacing) a document in a typed collection
-                artist.Name = "Badlands";
+                artist.Name = "The Decemberists";
                 mongo.Database.GetCollection<Artist>("Artists").Save(artist);
 
                 //Updating a nested collection
                 mongo.Database.GetCollection<Artist>("Artists").UpdateOne(
-                    new { Name = "Badlands"}, 
-                    new { Albums = M.PushAll("Badlands", "Voodoo Highway") }
+                    new { Name = "The Decemberists" },
+                    new { Albums = M.PushAll("Castaways and Cutouts", "5 Songs EP") }
                     );
 
             }
         }
 
         private static void doMoreCRUD() {
-            using (Mongo mongo = Mongo.Create(CONN_STRING)) {
+            using (IMongo mongo = Mongo.Create(CONN_STRING)) {
 
                 //Find all documents in a typed collection
                 var artists = mongo.GetCollection<Artist>("Artists").Find();
                 Console.WriteLine("Artist name: " + artists.FirstOrDefault().Name);
 
                 //Query with a document spec
-                var artist = mongo.GetCollection<Artist>("Artists").FindOne(new { Name = "Badlands" });
+                var artist = mongo.GetCollection<Artist>("Artists").FindOne(new { Name = "The Decemberists" });
                 Console.WriteLine("Album count: " + artist.Albums.Count);
 
                 //Count the documents in a collection
@@ -79,12 +80,12 @@ namespace NoRMQuickStart {
         }
 
         private static void doMapReduce() {
-            using (Mongo mongo = Mongo.Create(CONN_STRING)) {
+            using (IMongo mongo = Mongo.Create(CONN_STRING)) {
 
                 //Add some tags
                 mongo.Database.GetCollection<Artist>("Artists").UpdateOne(
-                    new { Name = "Badlands" },
-                    new { Tags = M.Set(new List<string>() { "Hard Rock", "80s" }) });
+                    new { Name = "The Decemberists" },
+                    new { Tags = M.Set(new List<string>() { "Folk rock", "Indie" }) });
 
 
                 //Create map and reduce functons
@@ -99,52 +100,52 @@ namespace NoRMQuickStart {
                                 return count;
                             }";
 
-                
+
                 //MapReduce class is responsible for calling mapreduce command
                 MapReduce mr = mongo.Database.CreateMapReduce();
-                
+
                 //Represents the document passed to the db.runCommand in the shell example
                 MapReduceOptions options = new MapReduceOptions("Artists") {
                     Map = map, Reduce = reduce, Permanant = false, OutputCollectionName = "Tags"
                 };
-                
+
                 MapReduceResponse response = mr.Execute(options);
                 var collection = mongo.Database.GetCollection<Tag>("Tags");
                 Console.WriteLine("Tag count: " + collection.Count());
-                
+
             }
         }
 
         private static void doLINQ() {
-            
-            using (Mongo mongo = Mongo.Create(CONN_STRING)) {
+
+            using (IMongo mongo = Mongo.Create(CONN_STRING)) {
 
                 //LINQ provider exposed via AsQueryable method of MongoCollection
                 var artists = mongo.Database.GetCollection<Artist>("Artists").AsQueryable();
-                
+
                 //Find items in typed collection
-                var artistsStartingWithB = from a in mongo.Database.GetCollection<Artist>().AsQueryable()
-                                           where a.Name.StartsWith("B")
-                                           select a;
-                Console.WriteLine("First artist starting with B: " + artistsStartingWithB.First().Name);
-                
+                var artistsStartingWithThe = from a in mongo.Database.GetCollection<Artist>("Artists").AsQueryable()
+                                             where a.Name.StartsWith("The")
+                                             select a;
+                Console.WriteLine("First artist starting with The: " + artistsStartingWithThe.First().Name);
+
                 //Find artists without pulling back nested collections
-                var artistsWithoutAlbums = 
-                    from a in mongo.Database.GetCollection<Artist>().AsQueryable()
-                    where Regex.IsMatch(a.Name, "land", RegexOptions.IgnoreCase)
+                var artistsWithDecInTheName =
+                    from a in mongo.Database.GetCollection<Artist>("Artists").AsQueryable()
+                    where Regex.IsMatch(a.Name, "dec", RegexOptions.IgnoreCase)
                     select new { Name = a.Name };
-                Console.WriteLine("First artist with land in name: " + artistsWithoutAlbums.First().Name);
+                Console.WriteLine("First artist with dec in name: " + artistsWithDecInTheName.First().Name);
 
                 //Find artists with a given tag
-                var artistsWithHardRockTag = mongo.Database.GetCollection<Artist>("Artists")
-                                .AsQueryable().Where(a => a.Tags.Any(s => s == "Hard Rock"));
-                Console.WriteLine("First artist with hard rock tag: " + artistsWithHardRockTag.First().Name);
-            }            
+                var artistsWithIndieTag = mongo.Database.GetCollection<Artist>("Artists")
+                                .AsQueryable().Where(a => a.Tags.Any(s => s == "Indie"));
+                Console.WriteLine("First artist with indie tag: " + artistsWithIndieTag.First().Name);
+            }
         }
 
         private static void doSequence() {
 
-            using (Mongo mongo = Mongo.Create(CONN_STRING)) {
+            using (IMongo mongo = Mongo.Create(CONN_STRING)) {
 
             }
 

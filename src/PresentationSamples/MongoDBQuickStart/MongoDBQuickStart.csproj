@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>be448a2f-11c4-40dd-89a3-4411f90cc4ee</ProjectGuid>
+    <ProjectGuid>{7EBB05BD-A6C2-4156-B25A-F9A332C7599D}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MongoDBQuickStart</RootNamespace>
