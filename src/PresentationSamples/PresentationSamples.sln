@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcExtensions", "ASPDotNetM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCContribSamples", "ASPDotNetMVCExtensibility\MVCContribSamples\MVCContribSamples.csproj", "{A90C3E2D-0939-4FD9-B64C-C0F828A5F159}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoDBQuickStart", "MongoDBQuickStart\MongoDBQuickStart.csproj", "{7EBB05BD-A6C2-4156-B25A-F9A332C7599D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoDBQuickStart", "NoSQLAndDotNet\MongoDBQuickStart\MongoDBQuickStart.csproj", "{7EBB05BD-A6C2-4156-B25A-F9A332C7599D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
