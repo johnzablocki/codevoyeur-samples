@@ -70,7 +70,7 @@ namespace MongoDBRepositoryBase.Areas.Admin.Controllers
         {
 
             Post post = _postRpository.FindById(id);
-            ViewData["Blogs"] = new SelectList(_blogRepository.FindAll(), "Id", "Name", post.Id);
+            ViewData["Blogs"] = new SelectList(_blogRepository.FindAll(), "Id", "Name", post.BlogId);
 
             return View(post);
         }
