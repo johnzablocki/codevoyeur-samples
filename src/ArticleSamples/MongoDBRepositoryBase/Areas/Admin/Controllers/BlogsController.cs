@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MongoDBRepositoryBase.Models;
+using MongoDB.Bson;
 
 namespace MongoDBRepositoryBase.Areas.Admin.Controllers
 {
@@ -70,10 +71,11 @@ namespace MongoDBRepositoryBase.Areas.Admin.Controllers
         // POST: /Admin/Blog/Edit/5
 
         [HttpPost]
-        public ActionResult Edit([Bind]Blog blog)
+        public ActionResult Edit([Bind]Blog blog, string id)
         {
             try
             {
+                blog.Id = new ObjectId(id);
                 _repository.Save(blog);
  
                 return RedirectToAction("Index");
