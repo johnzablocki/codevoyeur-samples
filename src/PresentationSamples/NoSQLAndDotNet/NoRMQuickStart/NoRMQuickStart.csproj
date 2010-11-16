@@ -55,6 +55,7 @@
     <Compile Include="Tag.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MongoDBBlog.js" />
     <Content Include="MongoDBShell.js" />
     <Content Include="Samples.xml" />
   </ItemGroup>
