@@ -13,13 +13,17 @@ namespace MongoDBQuickStart {
     class Program {
 
         private const string COLLECTION = "Artists";
+                
         private static MongoDatabase _mongoDatabase = null;
 
         static Program() {
 
+            //MongoConnectioSettings used to create connection strings   
             MongoConnectionSettings settings = new MongoConnectionSettings();
             settings.Address = new MongoServerAddress("localhost", 27017);
+            //MongoServer manages access to MongoDatabase
             MongoServer mongoServer = new MongoServer(settings);
+            //MongoDatabase used to access MongoCollection instances
             _mongoDatabase = mongoServer.GetDatabase("AltNet");
         }
 
