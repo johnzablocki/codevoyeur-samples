@@ -10,7 +10,7 @@ namespace NoRMQuickStart {
 
     class Program {
 
-        private const string CONN_STRING = "mongodb://localhost/CodeCamp";
+        private const string CONN_STRING = "mongodb://localhost/AltDotNet";
 
         public static void Main() {
 
