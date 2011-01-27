@@ -65,6 +65,7 @@ namespace Prohibition.SimpleGeo {
                 ConsumerSecret = "CJYFj8Sy3WwDL2sFfQXJnDdyXh7BqDU2"
             };
 
+
             client.Authority = AUTHORITY;
             client.VersionPath = VERSIONPATH;
             client.Credentials = credentials;
