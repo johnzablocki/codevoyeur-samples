@@ -61,8 +61,8 @@ namespace Prohibition.SimpleGeo {
                 Type = OAuthType.RequestToken,
                 SignatureMethod = OAuthSignatureMethod.HmacSha1,
                 ParameterHandling = OAuthParameterHandling.HttpAuthorizationHeader,
-                ConsumerKey = "<enter>",
-                ConsumerSecret = "<enter>"
+                ConsumerKey = "vvc2y7nAjkx6fUaJqQ94FT7nAdZCWQrA",
+                ConsumerSecret = "CJYFj8Sy3WwDL2sFfQXJnDdyXh7BqDU2"
             };
 
             client.Authority = AUTHORITY;
