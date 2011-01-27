@@ -63,7 +63,6 @@ namespace Prohibition.SimpleGeo {
                 ParameterHandling = OAuthParameterHandling.HttpAuthorizationHeader,
                 ConsumerKey = "<enter>",
                 ConsumerSecret = "<enter>"
-
             };
 
             client.Authority = AUTHORITY;
