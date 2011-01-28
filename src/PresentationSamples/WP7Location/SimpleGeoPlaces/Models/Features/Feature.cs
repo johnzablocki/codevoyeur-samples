@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Prohibition.SimpleGeo.Core;
+using SimpleGeoPlaces.Models.Core;
 
-namespace Prohibition.SimpleGeo.Features {
+namespace SimpleGeoPlaces.Models.Features {
     public class Feature {
 
         public Geometry Geometry { get; set; }

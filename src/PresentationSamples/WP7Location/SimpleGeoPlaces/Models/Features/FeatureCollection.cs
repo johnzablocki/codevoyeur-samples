@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Prohibition.SimpleGeo.Features {
+namespace SimpleGeoPlaces.Models.Features {
     public class FeatureCollection {
 
         public int Total { get; set; }

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Prohibition.SimpleGeo.Core;
+using SimpleGeoPlaces.Models.Core;
 
-namespace Prohibition.SimpleGeo.Core {
+namespace SimpleGeoPlaces.Models.Core {
     
     public class Geometry {
 
