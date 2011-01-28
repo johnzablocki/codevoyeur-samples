@@ -27,6 +27,7 @@ namespace SimpleGeoPlaces {
         private static MainPageViewModel _mainPageViewModel = null;
 
         public static MainPageViewModel MainPageViewModel {
+            set { _mainPageViewModel = value; }
             get {
                 if (null == _mainPageViewModel) {
                     _mainPageViewModel = new MainPageViewModel();
