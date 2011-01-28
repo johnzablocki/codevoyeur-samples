@@ -13,6 +13,8 @@ using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using SimpleGeoPlaces.ViewModels;
+using System.Windows.Threading;
+using SimpleGeoPlaces.State;
 
 namespace SimpleGeoPlaces {
     public partial class App : Application {
@@ -21,7 +23,6 @@ namespace SimpleGeoPlaces {
         /// </summary>
         /// <returns>The root frame of the Phone Application.</returns>
         public PhoneApplicationFrame RootFrame { get; private set; }
-
 
         private static MainPageViewModel _mainPageViewModel = null;
 
@@ -32,12 +33,15 @@ namespace SimpleGeoPlaces {
                 }
                 return _mainPageViewModel;
             }            
-        }
-
+        }             
+        
         /// <summary>
         /// Constructor for the Application object.
         /// </summary>
         public App() {
+
+            LocalStateContainer.Dispatcher = RootVisual.Dispatcher;
+
             // Global handler for uncaught exceptions. 
             UnhandledException += Application_UnhandledException;
 

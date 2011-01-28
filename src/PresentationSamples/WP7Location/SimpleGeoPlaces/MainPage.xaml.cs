@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Shell;
 
 namespace SimpleGeoPlaces {
     public partial class MainPage : PhoneApplicationPage {
@@ -21,7 +22,8 @@ namespace SimpleGeoPlaces {
         }
 
         public void OnTaxonomySelectionChanged(object sender, SelectionChangedEventArgs e) {
-            NavigationService.Navigate(new Uri("/SearchResults.xaml", UriKind.Relative));
+            PhoneApplicationService.Current.State["CurrentTaxonomy"] = e.AddedItems[0];
+            NavigationService.Navigate(new Uri("/SearchResultsPage.xaml", UriKind.Relative));
         }
     }
 }
