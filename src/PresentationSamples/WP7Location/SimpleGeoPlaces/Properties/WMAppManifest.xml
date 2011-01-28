@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.0">
-  <App xmlns="" ProductID="{3e6c2975-0274-4133-9866-269b7a428bf9}" Title="SimpleGeoPlaces" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal"  Author="SimpleGeoPlaces author" Description="Sample description" Publisher="SimpleGeoPlaces">
+  <App xmlns="" ProductID="{3e6c2975-0274-4133-9866-269b7a428bf9}" Title="Herbivore's Dilemma" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal"  Author="SimpleGeoPlaces author" Description="Sample description" Publisher="SimpleGeoPlaces">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_GAMERSERVICES"/>
@@ -24,7 +24,7 @@
         <TemplateType5>
           <BackgroundImageURI IsRelative="true" IsResource="false">Background.png</BackgroundImageURI>
           <Count>0</Count>
-          <Title>SimpleGeoPlaces</Title>
+          <Title>Herbivore's Dilemma</Title>
         </TemplateType5>
       </PrimaryToken>
     </Tokens>

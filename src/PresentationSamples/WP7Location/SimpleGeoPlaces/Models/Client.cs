@@ -35,14 +35,15 @@ namespace SimpleGeoPlaces.Models {
 
         }
 
-        public void GetNearbyPlaces(double latitude, double longitude, string query = null, string category = null) { 
+        public void GetNearbyPlaces(double latitude, double longitude, string query = null, string category = null, int radius = 25) { 
 
             var path = string.Format("places/{0},{1}.json", latitude, longitude);
             
             //TODO: less ternary operator!
             path += !string.IsNullOrEmpty(query) ? "?q=" + query : "";
             path += !string.IsNullOrEmpty(category) ? 
-                string.IsNullOrEmpty(query) ? "?" : "&" + "category=" + category: "";            
+                string.IsNullOrEmpty(path) ? "?" : "&" + "category=" + category : "";
+            path += string.IsNullOrEmpty(path) ? "?" : "&" + "radius=" + radius;
 
             var request = new RestRequest() { Path = path };            
             BeginRequest(request, RequestComplete);

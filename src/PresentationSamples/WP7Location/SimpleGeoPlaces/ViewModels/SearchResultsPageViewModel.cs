@@ -49,8 +49,8 @@ namespace SimpleGeoPlaces.ViewModels {
 
         public void LoadData() {
             Client client = new Client("vvc2y7nAjkx6fUaJqQ94FT7nAdZCWQrA", "CJYFj8Sy3WwDL2sFfQXJnDdyXh7BqDU2");
-            client.RequestCompleteEventHandler += new Action<FeatureCollection>(client_RequestCompleteEventHandler);                        
-            client.GetNearbyPlaces(37.7645, -122.4294, CurrentTaxonomy, "restaurant");
+            client.RequestCompleteEventHandler += new Action<FeatureCollection>(client_RequestCompleteEventHandler);
+            client.GetNearbyPlaces(41.187661, -73.181005, CurrentTaxonomy, "restaurant");
         }
 
     }

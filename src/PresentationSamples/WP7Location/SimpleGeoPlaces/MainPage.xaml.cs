@@ -11,19 +11,22 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using SimpleGeoPlaces.ViewModels;
 
 namespace SimpleGeoPlaces {
     public partial class MainPage : PhoneApplicationPage {
         // Constructor
         public MainPage() {
-            InitializeComponent();
-
+            InitializeComponent();            
             DataContext = App.MainPageViewModel;
         }
 
-        public void OnTaxonomySelectionChanged(object sender, SelectionChangedEventArgs e) {
-            PhoneApplicationService.Current.State["CurrentTaxonomy"] = e.AddedItems[0];
-            NavigationService.Navigate(new Uri("/SearchResultsPage.xaml", UriKind.Relative));
+        public void OnLoadedPivotItem(object sender, PivotItemEventArgs e) {
+            
+            //this feels wrong, I have some Binging to do...
+            App.MainPageViewModel = new MainPageViewModel();
+            App.MainPageViewModel.LoadData(TaxonomyMenu.SelectedItem.ToString());
+            DataContext = App.MainPageViewModel;
         }
     }
 }
