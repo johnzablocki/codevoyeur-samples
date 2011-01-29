@@ -16,6 +16,7 @@ using SimpleGeoPlaces.State;
 using SimpleGeoPlaces.Models;
 
 namespace SimpleGeoPlaces.ViewModels {
+
     public class MainPageViewModel : ViewModelBase {
 
         private ObservableCollection<string> _taxonomies;
@@ -53,10 +54,14 @@ namespace SimpleGeoPlaces.ViewModels {
                 });
         }
 
-        public void LoadData(string taxonomy) {
+        public void LoadData(string location, string taxonomy) {
             Client client = new Client("vvc2y7nAjkx6fUaJqQ94FT7nAdZCWQrA", "CJYFj8Sy3WwDL2sFfQXJnDdyXh7BqDU2");
             client.RequestCompleteEventHandler += new Action<FeatureCollection>(client_RequestCompleteEventHandler);
-            client.GetNearbyPlaces(40.672528, -73.983506, taxonomy, "restaurant", 300);
+            
+            var locationSplit = location.Split(',');
+            double latitude = double.Parse(locationSplit[0]);
+            double longitude = double.Parse(locationSplit[1]);
+            client.GetNearbyPlaces(latitude, longitude, taxonomy, "restaurant", 300);
         }
 
     }
