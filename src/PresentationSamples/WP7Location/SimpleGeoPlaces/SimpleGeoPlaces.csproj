@@ -48,6 +48,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GpsEmulatorClient">
+      <HintPath>..\..\..\..\lib\GpsEmulatorClient.dll</HintPath>
+    </Reference>
     <Reference Include="Hammock.WindowsPhone">
       <HintPath>..\..\..\..\lib\Hammock.WindowsPhone.dll</HintPath>
     </Reference>
