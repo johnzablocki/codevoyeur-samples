@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<posts>
+  <post>
+    <author>
+      <name>John Zablocki</name>
+      <id>497ce96f395f2f052a494fd4</id>
+    </author>
+    <title>On Running NerdDinner on MongoDB - Part 1</title>
+    <tags>
+      <tag>mvc</tag>
+      <tag>mongodb</tag>
+      <tag>norm</tag>
+    </tags>
+    <created_date>6-14-2010</created_date>
+    <text>At the Hartford Code Camp...</text>
+  </post>
+</posts>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<queries>
+  <query name="FindByArtist">
+def find_by_artist(album):
+  return search_param.lower() in album.Artist.lower()
+query = find_by_artist
+  </query>
+  <query name="FindByTitle">  
+query = lambda a: search_param.lower() in a.Title.lower()
+  </query>
+  <query name="FindByTrack">
+query = lambda a: len([track for track in a.Tracks if search_param.lower() in track.lower()]) > 0
+  </query>
+</queries>

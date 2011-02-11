@@ -1,0 +1,26 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="IronPythonMVCControllerFactory.Views.Shared.Site" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title><%= Html.Encode(ViewData["Title"]) %></title>
+    <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="page">
+        
+        
+        <div style="margin:10px 0 10px 0;">
+        <%= Html.ActionLink("Home", "Index", "Home") %> | <%= Html.ActionLink("Profile", "Index", "Profile") %> | <%= Html.ActionLink("News", "Index", "News") %>
+        </div>
+        
+        <h2><%= ViewData["WelcomeMessage"] %></h2>    
+        
+        
+        
+        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+    </div>
+</body>
+</html>

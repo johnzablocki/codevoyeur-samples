@@ -1,0 +1,84 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="SimpleGeoPlaces.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="0,17,0,10">
+            <TextBlock x:Name="PageTitle" Text="Herbivore's Dilemma" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="55"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+
+            <StackPanel>
+
+                <controls:Pivot ItemsSource="{Binding Taxonomies}" x:Name="TaxonomyMenu" LoadedPivotItem="OnLoadedPivotItem" FontSize="45">
+                    <controls:Pivot.ItemTemplate>
+                        <DataTemplate>
+                        </DataTemplate>
+                    </controls:Pivot.ItemTemplate>
+                </controls:Pivot>
+
+                <ListBox ItemsSource="{Binding Features}" Margin="12,0,12,0" FontSize="27">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="12,0,0,17">
+                                <TextBlock Text="{Binding Properties.Name}"></TextBlock>
+                                <TextBlock Text="{Binding Properties.Address}"></TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Properties.City}"></TextBlock>
+                                    <TextBlock Text=", "></TextBlock>
+                                    <TextBlock Text="{Binding Properties.Province}"></TextBlock>
+                                    <TextBlock Text=" "></TextBlock>
+                                    <TextBlock Text="{Binding Properties.Postcode}"></TextBlock>
+                                </StackPanel>
+                                <TextBlock Text="{Binding Properties.Phone}"></TextBlock>
+                            </StackPanel>                                   
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+            
+            
+
+            <!--<ListBox ItemsSource="{Binding Taxonomies}" FontSize="30" SelectionChanged="OnTaxonomySelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="0,0,0,17">
+                            <TextBlock Text="{Binding}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>-->
+        </Grid>
+    </Grid>
+
+    <!--Sample code showing usage of ApplicationBar-->
+    <phone:PhoneApplicationPage.ApplicationBar>        
+        <shell:ApplicationBar>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="Update Location" Click="ApplicationBarMenuItem_Click" />                
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>
