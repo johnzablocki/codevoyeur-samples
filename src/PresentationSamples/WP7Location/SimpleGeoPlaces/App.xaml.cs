@@ -34,8 +34,20 @@ namespace SimpleGeoPlaces {
                 }
                 return _mainPageViewModel;
             }            
-        }             
+        }
+
+        private static MapPageViewModel _mapPageViewModel;
+
+        public static MapPageViewModel MapPageViewModel {
+            get {
+                if (null == _mapPageViewModel) {
+                    _mapPageViewModel = new MapPageViewModel();
+                }
+                return _mapPageViewModel; 
+            }         
+        }
         
+
         /// <summary>
         /// Constructor for the Application object.
         /// </summary>

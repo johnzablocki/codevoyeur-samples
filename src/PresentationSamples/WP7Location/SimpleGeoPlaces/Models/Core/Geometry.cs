@@ -11,7 +11,7 @@ namespace SimpleGeoPlaces.Models.Core {
         public string Point { get; set; }
 
         //TODO: convert to list of Coordinate 
-        public IList<decimal> Coordinates { get; set; }        
+        public IList<double> Coordinates { get; set; }        
 
     }
 }

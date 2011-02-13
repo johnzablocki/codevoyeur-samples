@@ -34,14 +34,21 @@ namespace SimpleGeoPlaces {
             DataContext = App.MainPageViewModel;
 
 #if GPS_EMULATOR
-            _watcher = new GpsEmulatorClient.GeoCoordinateWatcher();
+            _watcher = new GpsEmulatorClient.GeoCoordinateWatcher();            
 #else
-            _Watcher = new System.Device.Location.GeoCoordinateWatcher();
+            _Watcher = new System.Device.Location.GeoCoordinateWatcher();            
+            (_watcher as GeoCoordinateWatcher).MovementThreshold = 20;
 #endif
-            _watcher.PositionChanged += new EventHandler<GeoPositionChangedEventArgs<GeoCoordinate>>(watcher_PositionChanged);            
+            _watcher.PositionChanged += new EventHandler<GeoPositionChangedEventArgs<GeoCoordinate>>(watcher_PositionChanged);
+            _watcher.StatusChanged += new EventHandler<GeoPositionStatusChangedEventArgs>(_watcher_StatusChanged);
+        }
+
+        void _watcher_StatusChanged(object sender, GeoPositionStatusChangedEventArgs e) {
+            
         }
 
         public void OnLoadedPivotItem(object sender, PivotItemEventArgs e) {
+
             
             //TODO: this should obviously not be in the code behind
             using (IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication()) {
@@ -62,11 +69,12 @@ namespace SimpleGeoPlaces {
                 DataContext = App.MainPageViewModel;
             }
 
-            
         }
         
         void watcher_PositionChanged(object sender, GeoPositionChangedEventArgs<GeoCoordinate> e) {
-            
+
+            SearchProgress.Visibility = Visibility.Visible;
+
             //TODO: this also should obviously not be in the code behind
             using (IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication()) {                
                 if (isoStore.FileExists(LOCATION_FILE)) {
@@ -77,10 +85,19 @@ namespace SimpleGeoPlaces {
                 var bytesToWrite = Encoding.Unicode.GetBytes(location);
                 file.Write(bytesToWrite, 0, bytesToWrite.Length);
             }
+
+            SearchProgress.Visibility = Visibility.Collapsed;
         }
 
         private void ApplicationBarMenuItem_Click(object sender, EventArgs e) {
             _watcher.Start();
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+
+            PhoneApplicationService.Current.State["SelectedRestaurant"] = e.AddedItems[0];
+
+            NavigationService.Navigate(new Uri("/MapPage.xaml", UriKind.Relative));
         }
     }
 }
