@@ -120,9 +120,13 @@ namespace MongoDBQuickStart {
                                 return count;
                             }";
 
-            var result = _mongoDatabase.GetCollection<Artist>(COLLECTION).MapReduce(map, reduce, MapReduceOptions.SetKeepTemp(true).SetOutput("Tags"));
+            var result = _mongoDatabase.GetCollection<Artist>(COLLECTION)
+                .MapReduce(map, reduce, 
+                MapReduceOptions.SetKeepTemp(true)
+                .SetOutput("Tags"));
 
-            var collection = _mongoDatabase.GetCollection<Tag>(result.ResultCollectionName);
+            var collection = _mongoDatabase
+                .GetCollection<Tag>(result.ResultCollectionName);
             Console.WriteLine("Tag count: " + collection.Count());
 
         }
@@ -132,15 +136,21 @@ namespace MongoDBQuickStart {
             var artists = _mongoDatabase.GetCollection<Artist>(COLLECTION);
             
             //Find items in typed collection
-            var artistsStartingWithThe = artists.Find(Query.Matches("Name", new Regex("the", RegexOptions.IgnoreCase)));
+            var artistsStartingWithThe = 
+                artists.Find(
+                Query.Matches("Name", new Regex("the", 
+                    RegexOptions.IgnoreCase)));
             Console.WriteLine("First artist starting with The: " + artistsStartingWithThe.First().Name);
 
             //Find artists without pulling back nested collections
-            var artistsWithDecInTheName = artists.Find(Query.Matches("Name", "Dec")).SetFields("Name");
+            var artistsWithDecInTheName = 
+                artists.Find(Query.Matches("Name", "Dec"))
+                .SetFields("Name");
             Console.WriteLine("First artist with dec in name: " + artistsWithDecInTheName.First().Name);
 
             ////Find artists with a given tag
-            var artistsWithIndieTag = artists.Find(Query.In("Tags", "Indie"));
+            var artistsWithIndieTag = artists.Find(
+                Query.In("Tags", "Indie"));
             Console.WriteLine("First artist with indie tag: " + artistsWithIndieTag.First().Name);
         }
 

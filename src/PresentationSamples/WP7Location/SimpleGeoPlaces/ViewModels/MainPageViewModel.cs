@@ -19,6 +19,8 @@ namespace SimpleGeoPlaces.ViewModels {
 
     public class MainPageViewModel : ViewModelBase {
 
+        private const string MISSING_PHONE_NUMBER = "+1";
+
         private ObservableCollection<string> _taxonomies;
 
         public ObservableCollection<string> Taxonomies {
@@ -26,7 +28,7 @@ namespace SimpleGeoPlaces.ViewModels {
 
                 if (null == _taxonomies) {
                     _taxonomies = new ObservableCollection<string>() {
-                        "Vegetarian", "Vegan", "Raw", "Natural", "Organic"
+                        "vegetarian", "vegan", "raw", "natural", "organic"
                     };
                 }
 
@@ -49,6 +51,9 @@ namespace SimpleGeoPlaces.ViewModels {
         public void client_RequestCompleteEventHandler(FeatureCollection obj) {
             LocalStateContainer.Dispatcher.BeginInvoke(() => {
                     foreach (var feature in obj.Features) {
+                        if (feature.Properties.Phone.Trim() == MISSING_PHONE_NUMBER) {
+                            feature.Properties.Phone = null;
+                        }
                         Features.Add(feature);
                     }
                 });
@@ -63,6 +68,7 @@ namespace SimpleGeoPlaces.ViewModels {
             double longitude = double.Parse(locationSplit[1]);
             client.GetNearbyPlaces(latitude, longitude, taxonomy, "restaurant", 300);
         }
+
 
     }
 }

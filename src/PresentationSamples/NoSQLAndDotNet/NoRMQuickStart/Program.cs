@@ -10,7 +10,7 @@ namespace NoRMQuickStart {
 
     class Program {
 
-        private const string CONN_STRING = "mongodb://localhost/AltDotNet";
+        private const string CONN_STRING = "mongodb://localhost/AltDotNetDemo";
 
         public static void Main() {
 
@@ -24,7 +24,7 @@ namespace NoRMQuickStart {
 
                 doMapReduce();
 
-                doLINQ();
+                //doLINQ();
 
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);

@@ -23,14 +23,17 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="0,17,0,10">
-            <TextBlock x:Name="PageTitle" Text="Herbivore's Dilemma" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="55"/>
+            <StackPanel Orientation="Horizontal" Visibility="Collapsed" x:Name="ProgressPanel">
+                <TextBlock Text="UPDATING" x:Name="SearchProgressMessage" FontSize="16" Width="86" />
+                <ProgressBar IsIndeterminate="True" Name="SearchProgress" Visibility="Visible" Width="407" />
+            </StackPanel>
+            <TextBlock x:Name="PageTitle" Text="herbivore's dilemma" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="55"/>            
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-
+            
             <StackPanel>
-
                 <controls:Pivot ItemsSource="{Binding Taxonomies}" x:Name="TaxonomyMenu" LoadedPivotItem="OnLoadedPivotItem" FontSize="45">
                     <controls:Pivot.ItemTemplate>
                         <DataTemplate>
@@ -38,7 +41,7 @@
                     </controls:Pivot.ItemTemplate>
                 </controls:Pivot>
 
-                <ListBox ItemsSource="{Binding Features}" Margin="12,0,12,0" FontSize="27">
+                <ListBox ItemsSource="{Binding Features}" Margin="12,0,12,0" FontSize="27" SelectionChanged="ListBox_SelectionChanged">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="12,0,0,17">

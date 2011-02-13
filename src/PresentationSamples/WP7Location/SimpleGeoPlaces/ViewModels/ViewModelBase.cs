@@ -21,6 +21,6 @@ namespace SimpleGeoPlaces.ViewModels {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-
+     
     }
 }
