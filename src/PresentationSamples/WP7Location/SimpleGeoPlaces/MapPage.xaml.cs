@@ -22,7 +22,7 @@ namespace SimpleGeoPlaces {
             InitializeComponent();
 
             App.MapPageViewModel.LoadData(PhoneApplicationService.Current.State["SelectedRestaurant"] as Feature);            
-            DataContext = App.MapPageViewModel;
+            DataContext = App.MapPageViewModel;            
         }
 
         void button_Click(object sender, RoutedEventArgs e) {

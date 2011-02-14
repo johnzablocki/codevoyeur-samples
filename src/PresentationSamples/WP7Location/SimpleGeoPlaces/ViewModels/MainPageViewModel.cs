@@ -19,6 +19,9 @@ namespace SimpleGeoPlaces.ViewModels {
 
     public class MainPageViewModel : ViewModelBase {
 
+        public event Action BeginDownload;
+        public event Action EndDownload;
+
         private const string MISSING_PHONE_NUMBER = "+1";
 
         private ObservableCollection<string> _taxonomies;
@@ -56,6 +59,9 @@ namespace SimpleGeoPlaces.ViewModels {
                         }
                         Features.Add(feature);
                     }
+                    if (null != EndDownload) {
+                        EndDownload();
+                    }
                 });
         }
 
@@ -66,6 +72,10 @@ namespace SimpleGeoPlaces.ViewModels {
             var locationSplit = location.Split(',');
             double latitude = double.Parse(locationSplit[0]);
             double longitude = double.Parse(locationSplit[1]);
+
+            if (null != BeginDownload) {
+                BeginDownload();
+            }
             client.GetNearbyPlaces(latitude, longitude, taxonomy, "restaurant", 300);
         }
 
