@@ -79,6 +79,5 @@ namespace SimpleGeoPlaces.ViewModels {
             client.GetNearbyPlaces(latitude, longitude, taxonomy, "restaurant", 300);
         }
 
-
     }
 }

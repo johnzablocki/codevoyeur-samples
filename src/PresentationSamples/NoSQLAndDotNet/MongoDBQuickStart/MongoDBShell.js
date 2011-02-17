@@ -2,6 +2,23 @@
     This script file demonstrates the basics of using MongoDB from the interactive shell.
     It's not intended to be a best-practive example for anything!
 */
+/*Connect to a server:port/database 
+(defaults are localhost:27017/test ):*/
+mongo.exe localhost:27017/AltNetGroup
+
+//Switch database:
+use CodeCamp
+
+//View collections in a database:
+show collections
+
+//create an index on Name field
+db.Posts.ensureIndex({ Name : 1 });
+
+//copy one database to another
+db.copyDatabase("CodeCamp", "AltNetGroup")
+
+
 
 //create a document
 var post = { Title: "On Installing MongoDB as a Service on Windows" }

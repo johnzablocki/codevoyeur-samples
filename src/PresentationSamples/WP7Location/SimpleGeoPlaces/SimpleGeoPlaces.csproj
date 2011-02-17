@@ -80,7 +80,6 @@
     </Compile>
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Core\Classifier.cs" />
-    <Compile Include="Models\Core\Coordinate.cs" />
     <Compile Include="Models\Core\Geometry.cs" />
     <Compile Include="Models\Core\Properties.cs" />
     <Compile Include="Models\Features\Feature.cs" />

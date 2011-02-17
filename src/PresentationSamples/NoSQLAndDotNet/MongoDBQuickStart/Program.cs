@@ -18,13 +18,11 @@ namespace MongoDBQuickStart {
 
         static Program() {
 
-            //MongoConnectioSettings used to create connection strings   
-            MongoConnectionSettings settings = new MongoConnectionSettings();
-            settings.Address = new MongoServerAddress("localhost", 27017);
             //MongoServer manages access to MongoDatabase
-            MongoServer mongoServer = new MongoServer(settings);
+            MongoServer mongoServer = MongoServer.Create("mongodb://localhost:27017");
+            
             //MongoDatabase used to access MongoCollection instances
-            _mongoDatabase = mongoServer.GetDatabase("AltNet");
+            _mongoDatabase = mongoServer.GetDatabase("CodeCamp");
         }
 
         public static void Main() {
@@ -70,8 +68,7 @@ namespace MongoDBQuickStart {
             //Updating a nested collection
             _mongoDatabase.GetCollection<Artist>(COLLECTION).Update(
                 Query.EQ("Name", "The Decemberists"),
-                new BsonDocument("$pushAll",
-                    new BsonDocument("Albums", new BsonArray() { "Castaways and Cutouts", "Picaresque", "Hazards of Love", "The Crane Wife" }))
+                Update.PushAll("Albums", "Castaways and Cutouts", "Picaresque", "Hazards of Love", "The Crane Wife")
             );
 
         }
@@ -83,7 +80,7 @@ namespace MongoDBQuickStart {
             Console.WriteLine("Artist name: " + artists.FirstOrDefault().Name);
 
             //Query with a document spec
-            var artist = _mongoDatabase.GetCollection<Artist>(COLLECTION).FindOne(new BsonDocument { { "Name", "The Decemberists" } });
+            var artist = _mongoDatabase.GetCollection<Artist>(COLLECTION).FindOne(Query.EQ("Name", "The Decemberists"));
             Console.WriteLine("Album count: " + artist.Albums.Count);
 
             //Count the documents in a collection
@@ -97,8 +94,7 @@ namespace MongoDBQuickStart {
             //Add some tags
             _mongoDatabase.GetCollection<Artist>(COLLECTION).Update(
                 Query.EQ("Name", "The Decemberists"),
-                    new BsonDocument("$pushAll",
-                        new BsonDocument("Tags", new BsonArray() { "Folk rock", "Indie" }))
+                    Update.PushAll("Tags", "Folk rock", "Indie")
              );
 
             var artist = new Artist() {
@@ -120,13 +116,9 @@ namespace MongoDBQuickStart {
                                 return count;
                             }";
 
-            var result = _mongoDatabase.GetCollection<Artist>(COLLECTION)
-                .MapReduce(map, reduce, 
-                MapReduceOptions.SetKeepTemp(true)
-                .SetOutput("Tags"));
+            var result = _mongoDatabase.GetCollection<Artist>(COLLECTION).MapReduce(map, reduce, MapReduceOptions.SetKeepTemp(true).SetOutput("Tags"));
 
-            var collection = _mongoDatabase
-                .GetCollection<Tag>(result.ResultCollectionName);
+            var collection = _mongoDatabase.GetCollection<Tag>(result.CollectionName);
             Console.WriteLine("Tag count: " + collection.Count());
 
         }
@@ -136,21 +128,15 @@ namespace MongoDBQuickStart {
             var artists = _mongoDatabase.GetCollection<Artist>(COLLECTION);
             
             //Find items in typed collection
-            var artistsStartingWithThe = 
-                artists.Find(
-                Query.Matches("Name", new Regex("the", 
-                    RegexOptions.IgnoreCase)));
+            var artistsStartingWithThe = artists.Find(Query.Matches("Name", new Regex("the", RegexOptions.IgnoreCase)));
             Console.WriteLine("First artist starting with The: " + artistsStartingWithThe.First().Name);
 
             //Find artists without pulling back nested collections
-            var artistsWithDecInTheName = 
-                artists.Find(Query.Matches("Name", "Dec"))
-                .SetFields("Name");
+            var artistsWithDecInTheName = artists.Find(Query.Matches("Name", "Dec")).SetFields("Name");
             Console.WriteLine("First artist with dec in name: " + artistsWithDecInTheName.First().Name);
 
             ////Find artists with a given tag
-            var artistsWithIndieTag = artists.Find(
-                Query.In("Tags", "Indie"));
+            var artistsWithIndieTag = artists.Find(Query.In("Tags", "Indie"));
             Console.WriteLine("First artist with indie tag: " + artistsWithIndieTag.First().Name);
         }
 
