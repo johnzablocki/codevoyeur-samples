@@ -39,6 +39,8 @@ namespace MongoDBQuickStart {
 
                 doQueries();
 
+                doGroup();
+
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }
@@ -116,7 +118,8 @@ namespace MongoDBQuickStart {
                                 return count;
                             }";
 
-            var result = _mongoDatabase.GetCollection<Artist>(COLLECTION).MapReduce(map, reduce, MapReduceOptions.SetKeepTemp(true).SetOutput("Tags"));
+            var result = _mongoDatabase.GetCollection<Artist>(COLLECTION)
+                    .MapReduce(map, reduce, MapReduceOptions.SetKeepTemp(true).SetOutput("Tags"));
 
             var collection = _mongoDatabase.GetCollection<Tag>(result.CollectionName);
             Console.WriteLine("Tag count: " + collection.Count());
@@ -138,6 +141,20 @@ namespace MongoDBQuickStart {
             ////Find artists with a given tag
             var artistsWithIndieTag = artists.Find(Query.In("Tags", "Indie"));
             Console.WriteLine("First artist with indie tag: " + artistsWithIndieTag.First().Name);
+        }
+
+        private static void doGroup() {
+
+            //add one more artist for good measure
+            var artists = _mongoDatabase.GetCollection<Artist>(COLLECTION);
+            artists.Insert(new Artist() { Name = "Blind Pilot", Albums = new List<string>() { "3 Rounds and a Sound" } });
+
+            BsonJavaScript reduce = @"function(obj, out) { out.count += obj.Albums.length; }";
+            var groupBy = _mongoDatabase.GetCollection<Artist>(COLLECTION).Group(Query.Null, GroupBy.Keys("Name"), new BsonDocument("count", 1), reduce, null);
+
+            foreach (var item in groupBy) {
+                Console.WriteLine("{0}: {1} Album(s)", item.GetValue(0), item.GetValue(1));
+            }            
         }
 
     }

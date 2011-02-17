@@ -122,4 +122,23 @@ var result = db.runCommand(
 
 db.Tags.find()
 
+/*
+    group by example
+*/
 
+//first, insert some data
+db["UserActions"].insert({ Username : "jzablocki", Action : "Login"})
+db["UserActions"].insert({ Username : "jzablocki", Action : "Login"})
+db["UserActions"].insert({ Username : "jzablocki", Action : "Login"})
+db["UserActions"].insert({ Username : "jzablocki", Action : "PasswordChange"})
+db["UserActions"].insert({ Username : "mfreedman", Action : "PasswordChange"})
+db["UserActions"].insert({ Username : "mfreedman", Action : "PasswordChange"})
+db["UserActions"].insert({ Username : "mfreedman", Action : "Login"})
+
+//now run the group by
+db.UserActions.group(
+     { key :  { Username : true, Action : true },
+       cond : null,
+       reduce : function(obj, prev) { prev.count++; },
+       initial: { count: 0 }
+});
