@@ -39,14 +39,16 @@ namespace MongoDBQuickStart {
 
                 doQueries();
 
-                doGroup();
+                doBuilders();
+
+                doGeoQueries();
+
+                doGroup();                
 
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }
         }
-
-
 
         private static void doSetup() {
 
@@ -143,6 +145,47 @@ namespace MongoDBQuickStart {
             Console.WriteLine("First artist with indie tag: " + artistsWithIndieTag.First().Name);
         }
 
+        private static void doBuilders() {
+
+            //Or query
+            var artist = _mongoDatabase.GetCollection<Artist>(COLLECTION).Find(
+                Query.Or(Query.EQ("Name", "Sunny Day Real Estate"), Query.EQ("Name", "The Decemberists")));
+
+            //Update w/ increment
+            _mongoDatabase.GetCollection<Artist>(COLLECTION).Update(Query.EQ("Name", "The Decemberists"), Update.Inc("Ratings", 1), UpdateFlags.None);
+            
+            //(Not)In query
+            _mongoDatabase.GetCollection<Artist>(COLLECTION).Update(Query.NotIn("Name", "Sunny Day Real Estate", "Blind Pilot"), Update.Inc("Ratings", 1), UpdateFlags.None);
+
+            //Where query (takes JavaScript as argument)
+            artist = _mongoDatabase.GetCollection<Artist>(COLLECTION).Find(Query.Where("function() { return this.Name.indexOf('December') != -1; }"));
+
+            Console.WriteLine("{0} has {1} ratings", artist.First().Name, artist.First().Ratings);            
+
+        }
+
+        private static void doGeoQueries() {
+
+            var artist = _mongoDatabase.GetCollection<Artist>(COLLECTION).FindOne();
+            _mongoDatabase.GetCollection<Artist>(COLLECTION).Update(Query.EQ("Name", "The Decemberists"),
+                Update.PushAll("NextShowLocation", 41.768774, -72.672943));
+
+            artist = _mongoDatabase.GetCollection<Artist>(COLLECTION).FindOne();
+            _mongoDatabase.GetCollection<Artist>(COLLECTION).Update(Query.EQ("Name", "Sunny Day Real Estate"),
+                Update.PushAll("NextShowLocation", 37.380440, -122.114774)); 
+
+            //Add a geospatial index to the NextShowLocation property
+            _mongoDatabase.GetCollection<Artist>(COLLECTION).EnsureIndex(IndexKeys.GeoSpatial("NextShowLocation"));
+
+            //Query for shows near a location
+            var artistNearHartford = _mongoDatabase.GetCollection<Artist>(COLLECTION).FindOne(Query.Near("NextShowLocation", 40, -65));
+            Console.WriteLine("Next show near Hartford: " + artistNearHartford.Name);
+
+            var artistNearPaloAlto = _mongoDatabase.GetCollection<Artist>(COLLECTION).FindOne(Query.Near("NextShowLocation", 33, -122));
+            Console.WriteLine("Next show near Palo Alto: " + artistNearPaloAlto.Name);
+
+        }
+
         private static void doGroup() {
 
             //add one more artist for good measure
@@ -156,6 +199,7 @@ namespace MongoDBQuickStart {
                 Console.WriteLine("{0}: {1} Album(s)", item.GetValue(0), item.GetValue(1));
             }            
         }
+
 
     }
 
