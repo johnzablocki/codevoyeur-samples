@@ -5,10 +5,21 @@ import asyncmongo
 
 class RestaurantsHandler(tornado.web.RequestHandler):
 
+	@tornado.web.asynchronous
 	def get(self):
 	
-		self.render("templates/Restaurants/Create.html")
+		name = self.get_argument("name", None)
+		
+		if id != None:			
+			db = asyncmongo.Client(pool_id="my_db", host="127.0.0.1", port=27017, maxcached=10, maxconnections=50, dbname="VegTracker")
+			db.venues.find_one(name, callback=self._get_callback)
+		else:		
+			self.render("templates/Restaurants/Create.html", venue={ "name" : "Horizons", "city" : "Philadelphia", "state" : "PA" })
 
+	def _get_callback(self, response, error):
+		
+		self.render("templates/Restaurants/Create.html", venue=response)		
+		
 	@tornado.web.asynchronous
 	def post(self):
 		

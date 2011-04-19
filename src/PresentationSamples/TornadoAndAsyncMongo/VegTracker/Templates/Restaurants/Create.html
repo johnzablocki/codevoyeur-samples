@@ -13,9 +13,9 @@
 			
 			<fieldset style="width:300px;">
 				<form action="/restaurants/" method="POST">
-					<label>Name:</label><input type="text" name="name" value="Horizons" />
-					<label>City:</label><input type="text" name="city" value="Philadelphia" /><br />
-					<label>State:</label><input type="text" name="state" value="PA" /><br />
+					<label>Name:</label><input type="text" name="name" value="{{ venue["name"] }}" />
+					<label>City:</label><input type="text" name="city" value="{{ venue["state"] }}" /><br />
+					<label>State:</label><input type="text" name="state" value="{{ venue["name"] }}" /><br />
 					<input type="submit" value="Save" />
 				</form>
 			</fieldset>
