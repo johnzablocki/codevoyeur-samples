@@ -9,10 +9,15 @@
 			
 			Below is a list of the vegetarian friendly restaurants we currently track.
 			
+			<ul>
+			{% for venue in venues %}
+				<li>{{ "%s - %s, %s" % (escape(venue["name"]), escape(venue["city"]), escape(venue["state"])) }}</li>
+			{% end %}
+			</ul>
 			
 			
 			<div>
-				<a href="/Restaurants/">Add New</a>
+				<a href="/restaurants/">Add New</a>
 			</div>
 		
 	</body>
