@@ -13,7 +13,7 @@
 			{% for venue in venues %}
 				<li>
 					{{ "%s - %s, %s" % (escape(venue["name"]), escape(venue["city"]), escape(venue["state"])) }}
-					<a href="/restaurants/?name={{ escape(venue["name"]) }}">Edit</a>
+					<a href="/restaurants/?id={{ venue["_id"] }}">Edit</a>
 				</li>
 			{% end %}
 			</ul>
