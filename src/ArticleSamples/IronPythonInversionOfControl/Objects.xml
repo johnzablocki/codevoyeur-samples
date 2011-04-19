@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects>
+  <object name="AlbumLister" static="true">
+instance = AlbumLister()
+instance.Finder = reference("AlbumFinder")
+instance.Logger = reference("Logger")
+  </object>
+  <object name="AlbumFinder" static="true">
+instance = XmlAlbumFinder("Albums.xml")
+instance.Logger = reference("Logger")
+  </object>
+  <object name="Logger" static="false">
+instance = Logger()    
+  </object>  
+</objects>
