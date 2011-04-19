@@ -15,6 +15,16 @@ namespace NoRMQuickStart {
 
         public string Name { get; set; }
 
+        public int Ratings { get; set; }
+
+        private IList<decimal> _nextShowLocation = new List<decimal>(2);
+
+        public IList<decimal> NextShowLocation {
+            get { return _nextShowLocation; }
+            set { _nextShowLocation = value; }
+        }
+        
+
         private IList<string> _albums = new List<string>(0);
 
         //IList property will be mapped to JavaScript Array
@@ -29,7 +39,7 @@ namespace NoRMQuickStart {
         public IList<string> Tags {
             get { return _tags; }
             set { _tags = value; }
-        }
+        }        
         
     }
 
