@@ -12,11 +12,10 @@
 			
 			
 			<fieldset style="width:300px;">
-				<form action="/restaurants/" method="POST">
+				<form action="/restaurants/create/" method="POST">
 					<label>Name:</label><input type="text" name="name" value="{{ venue["name"] }}" />
 					<label>City:</label><input type="text" name="city" value="{{ venue["city"] }}" /><br />
-					<label>State:</label><input type="text" name="state" value="{{ venue["state"] }}" /><br />
-					<input type="hidden" value="{{ venue["_id"] }}" name="_id" /><br />
+					<label>State:</label><input type="text" name="state" value="{{ venue["state"] }}" /><br />					
 					<input type="submit" value="Save" />
 				</form>
 			</fieldset>
