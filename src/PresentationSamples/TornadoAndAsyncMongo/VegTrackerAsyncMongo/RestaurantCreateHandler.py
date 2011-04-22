@@ -28,5 +28,4 @@ class RestaurantCreateHandler(tornado.web.RequestHandler):
 	def _post_callback(self, response, error):
 	
 		self.write("Created")
-		self.redirect(r"/")
-		self.finish()
+		self.redirect(r"/")		
