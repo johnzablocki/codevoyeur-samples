@@ -1,22 +1,20 @@
 import tornado.web
 import tornado.ioloop
 
-import asyncmongo
+import pymongo
 
 from RestaurantCreateHandler import RestaurantCreateHandler
 from RestaurantUpdateHandler import RestaurantUpdateHandler
 from RestaurantDeleteHandler import RestaurantDeleteHandler
+from DBFactory import DBFactory
 
 class RestaurantListHandler(tornado.web.RequestHandler):
 
-	@tornado.web.asynchronous
 	def get(self):
 						
-		db = asyncmongo.Client(pool_id="my_db", host="127.0.0.1", port=27017, maxcached=10, maxconnections=50, dbname="VegTracker")
-		db.venues.find(limit=10, callback=self._get_callback)					
-	
-	def _get_callback(self, response, error):
-			self.render("Templates/Restaurants/List.html", venues=response)
+		db = DBFactory.create()
+		venues = db.venues.find()					
+		self.render("Templates/Restaurants/List.html", venues=venues)
 	
 application = tornado.web.Application([
 	(r"/", RestaurantListHandler),
