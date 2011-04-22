@@ -11,7 +11,7 @@ class RestaurantsHandler(tornado.web.RequestHandler):
 	@tornado.web.asynchronous
 	def get(self):
 	
-		self.render("templates/Restaurants/Create.html", venue={ "name" : "", "city" : "", "state" : "" })
+		self.render("Templates/Restaurants/Create.html", venue={ "name" : "", "city" : "", "state" : "" })
 	
 	@tornado.web.asynchronous
 	def post(self):

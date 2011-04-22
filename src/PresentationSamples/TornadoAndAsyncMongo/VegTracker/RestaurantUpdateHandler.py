@@ -18,7 +18,7 @@ class RestaurantUpdateHandler(tornado.web.RequestHandler):
 			spec = { "_id" : pymongo.objectid.ObjectId(id) }
 			
 			db = DBFactory.create()
-			db.venues.find_one(spec, callback=lambda response, error: self.render("templates/Restaurants/Edit.html", venue=response))			
+			db.venues.find_one(spec, callback=lambda response, error: self.render("Templates/Restaurants/Edit.html", venue=response))			
 		
 	@tornado.web.asynchronous
 	def post(self):
