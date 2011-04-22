@@ -13,3 +13,6 @@ tmp/
 #-- Microsoft Visual Studio specific
 *.user
 *.suo
+
+#-- Python files
+*.pyc

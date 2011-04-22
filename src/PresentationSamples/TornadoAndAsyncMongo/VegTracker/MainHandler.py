@@ -16,7 +16,7 @@ class MainHandler(tornado.web.RequestHandler):
 		db.venues.find(limit=10, callback=self._get_callback)					
 	
 	def _get_callback(self, response, error):
-			self.render("templates/Main/Index.html", venues=response)
+			self.render("Templates/Main/Index.html", venues=response)
 	
 application = tornado.web.Application([
 	(r"/", MainHandler),
