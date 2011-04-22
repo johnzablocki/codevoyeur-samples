@@ -6,7 +6,7 @@ import pymongo.objectid
 
 from DBFactory import DBFactory
 
-class RestaurantsHandler(tornado.web.RequestHandler):
+class RestaurantCreateHandler(tornado.web.RequestHandler):
 
 	@tornado.web.asynchronous
 	def get(self):

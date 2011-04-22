@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<title>
+			VegTracker
+		</title>	
+		<script type="text/javascript">
+			function deleteVenue(id) {
+				
+				if (confirm("Really delete this venue?")) {
+					idField = document.getElementById("_id");
+					idField.value = id;
+					document.forms[0].submit();
+				}
+			}
+		</script>
+	</head>
+	<body>
+			<h3>Welcome to VegTracker v0.1!</h3>
+			
+			Below is a list of the vegetarian friendly restaurants we currently track.
+			
+			<ul>
+			{% for venue in venues %}
+				<li>
+					{{ "%s - %s, %s" % (escape(venue["name"]), escape(venue["city"]), escape(venue["state"])) }}
+					<a href="/restaurants/edit/?id={{ venue["_id"] }}">Edit</a>
+					<a href="javascript:deleteVenue('{{ venue["_id"] }}')">Delete</a>
+				</li>
+			{% end %}
+			</ul>
+			
+			
+			<form id="deleteForm" action="/restaurants/delete/" method="POST">
+				<input type="hidden" name="_id" id="_id" />
+			</form>	
+			
+			<div>
+				<a href="/restaurants/create/">Add New</a>
+			</div>
+		
+	</body>
+</html>
