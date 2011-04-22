@@ -3,11 +3,11 @@ import tornado.ioloop
 
 import asyncmongo
 
-from RestaurantsHandler import RestaurantsHandler
+from RestaurantCreateHandler import RestaurantCreateHandler
 from RestaurantUpdateHandler import RestaurantUpdateHandler
 from RestaurantDeleteHandler import RestaurantDeleteHandler
 
-class MainHandler(tornado.web.RequestHandler):
+class RestaurantListHandler(tornado.web.RequestHandler):
 
 	@tornado.web.asynchronous
 	def get(self):
@@ -16,11 +16,11 @@ class MainHandler(tornado.web.RequestHandler):
 		db.venues.find(limit=10, callback=self._get_callback)					
 	
 	def _get_callback(self, response, error):
-			self.render("Templates/Main/Index.html", venues=response)
+			self.render("Templates/Restaurants/List.html", venues=response)
 	
 application = tornado.web.Application([
-	(r"/", MainHandler),
-	(r"/restaurants/create/", RestaurantsHandler),
+	(r"/", RestaurantListHandler),
+	(r"/restaurants/create/", RestaurantCreateHandler),
 	(r"/restaurants/edit/", RestaurantUpdateHandler),
 	(r"/restaurants/delete/", RestaurantDeleteHandler),
 ], debug=True)
