@@ -26,7 +26,7 @@ class RestaurantUpdateHandler(tornado.web.RequestHandler):
 		id = self.get_argument("_id", None)
 		
 		doc = {}
-		doc["_id"] = id
+		doc["_id"] = pymongo.objectid.ObjectId(id)
 		doc["name"] = self.get_argument("name")
 		doc["city"] = self.get_argument("city")
 		doc["state"] = self.get_argument("state")
