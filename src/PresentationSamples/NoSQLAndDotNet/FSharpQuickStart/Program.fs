@@ -1,7 +1,7 @@
 ﻿open MongoDB.Driver
 open MongoDB.Bson
 
-type Artist = { Name : string; Id : ObjectId }
+type Artist = { Name : string; Genre : string; Id : ObjectId }
 
 //MongoServer manages access to MongoDatabase
 let mongoServer = MongoServer.Create("mongodb://localhost:27017")
@@ -17,7 +17,7 @@ if mongoCollection.Exists() then
     mongoCollection.Drop()  
 
 //do setup
-let artist = { Name = "The Decembrists"; Id = ObjectId.GenerateNewId() } //this is necessary only because it's immutable
+let artist = { Name = "The Decembrists"; Genre = "Folk"; Id = ObjectId.GenerateNewId() } //this is necessary only because it's immutable
 mongoCollection.Insert(artist) |> ignore
 
 let updatedArtist = { artist with Name = "The Decemberists" }
