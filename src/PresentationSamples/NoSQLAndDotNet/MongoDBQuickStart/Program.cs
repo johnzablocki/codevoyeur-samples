@@ -22,7 +22,7 @@ namespace MongoDBQuickStart {
             MongoServer mongoServer = MongoServer.Create("mongodb://localhost:27017");
             
             //MongoDatabase used to access MongoCollection instances
-            _mongoDatabase = mongoServer.GetDatabase("CodeCampNYC");
+            _mongoDatabase = mongoServer.GetDatabase("HealthcareSourceBrownBag");
         }
 
         public static void Main() {
@@ -31,15 +31,15 @@ namespace MongoDBQuickStart {
 
                 doSetup();
 
-                //doCRUD();
+                doCRUD();
 
-                //doMoreCRUD();
+                doMoreCRUD();
 
-                //doMapReduce();
+                doMapReduce();
 
-                //doQueries();
+                doQueries();
 
-                //doGroup();
+                doGroup();
 
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
