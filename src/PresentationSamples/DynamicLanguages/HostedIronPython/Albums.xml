@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<albums>
+  <album artist="Radiohead" title="OK Computer">
+    <track>Let Down</track>
+    <track>No Surprises</track>
+    <track>Airbag</track>
+    <track>Karma Police</track>
+    <track>Fitter Happier</track>
+  </album>
+  <album artist="Radiohead" title="In Rainbows">
+    <track>4 Minute Warning</track>
+    <track>Reckoner</track>
+    <track>Nude</track>
+  </album>
+  <album artist="Radiohead" title="Hail to the Thief">
+    <track>2+2=5</track>
+    <track>Wolf at the Door</track>
+  </album>
+  <album artist="Elvis Costello" title="My Aim is True">
+    <track>Allison</track>
+    <track>Welcome to the Working Week</track>
+    <track>(The Angels Want to Wear My) Red Shoes</track>
+  </album>
+  <album artist="Elvis Costello" title="Brutal Youth">
+    <track>London's Brilliant Parade</track>
+    <track>Sulky girl</track>
+  </album>
+  <album artist="Elvis Costello" title="North">
+    <track>Still</track>
+    <track>You Turned to Me</track>
+  </album>
+  <album artist="The Beatles" title="Abbey Road">
+    <track>Golden Slumbers</track>
+    <track>You Never Give Me Your Money</track>
+    <track>The End</track>
+  </album>
+  <album artist="The Beatles" title="White Album">
+    <track>While My Guitar Gently Weeps</track>
+    <track>Happiness is a Warm Gun</track>
+    <track>Why Don't We Do it In the Road?</track>
+  </album>
+  <album artist="The Shins" title="Wincing the Night Away">
+    <track>Australia</track>
+    <track>Turn on Me</track>
+  </album>
+  <album artist="The Shins" title="Chutes Too Narrow">
+    <track>Kissing the Lipless</track>
+    <track>So Says I</track>
+    <track>Young Pilgrim</track>
+  </album>
+  <album artist="The Shins" title="Oh, Inverted World">
+    <track>Caring is Creepy</track>
+    <track>New Slang</track>
+  </album>
+  <album artist="The Killers" title="Hot Fuss">
+    <track>Mr. Bright Side</track>
+    <track>Somebody Told Me</track>
+  </album>
+  <album artist="The Killers" title="Sam's Town">
+    <track>Sam's Town</track>
+  </album>
+  <album artist="The Killers" title="Day &amp; Age">
+    <!--<track>Human</track>-->
+  </album>
+</albums>

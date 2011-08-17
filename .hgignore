@@ -1,0 +1,18 @@
+syntax: glob
+#-- Files
+*.bak.*
+*.bak
+thumbs.db
+
+#-- Directories
+bin/
+obj/
+_ReSharper.*/
+tmp/
+
+#-- Microsoft Visual Studio specific
+*.user
+*.suo
+
+#-- Python files
+*.pyc

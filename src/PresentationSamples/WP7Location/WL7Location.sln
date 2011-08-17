@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleGeoPlaces", "SimpleGeoPlaces\SimpleGeoPlaces.csproj", "{E5CE6F06-B859-4474-84AB-B7619A93FEB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WP7LocationQuickStart", "WP7LocationQuickStart\WP7LocationQuickStart.csproj", "{ABAC798A-D45B-413E-91F0-9936AC1DA068}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WP7LocationLiveDemo", "WP7LocationLiveDemo\WP7LocationLiveDemo.csproj", "{E5A9D359-9FFC-4963-91B4-EDC0F2859E88}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E5CE6F06-B859-4474-84AB-B7619A93FEB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5CE6F06-B859-4474-84AB-B7619A93FEB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5CE6F06-B859-4474-84AB-B7619A93FEB2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E5CE6F06-B859-4474-84AB-B7619A93FEB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5CE6F06-B859-4474-84AB-B7619A93FEB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5CE6F06-B859-4474-84AB-B7619A93FEB2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{ABAC798A-D45B-413E-91F0-9936AC1DA068}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABAC798A-D45B-413E-91F0-9936AC1DA068}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABAC798A-D45B-413E-91F0-9936AC1DA068}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{ABAC798A-D45B-413E-91F0-9936AC1DA068}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABAC798A-D45B-413E-91F0-9936AC1DA068}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABAC798A-D45B-413E-91F0-9936AC1DA068}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E5A9D359-9FFC-4963-91B4-EDC0F2859E88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5A9D359-9FFC-4963-91B4-EDC0F2859E88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5A9D359-9FFC-4963-91B4-EDC0F2859E88}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E5A9D359-9FFC-4963-91B4-EDC0F2859E88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5A9D359-9FFC-4963-91B4-EDC0F2859E88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5A9D359-9FFC-4963-91B4-EDC0F2859E88}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

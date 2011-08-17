@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IronPythonRouteRegistration", "IronPythonRouteRegistration.csproj", "{2B69B93D-F149-4FC1-9810-47B0E25DC2EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IronPythonAutoMapping", "..\IronPythonAutoMapping\IronPythonAutoMapping.csproj", "{2CA4216E-37F8-41B0-8969-C27928069A44}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2B69B93D-F149-4FC1-9810-47B0E25DC2EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B69B93D-F149-4FC1-9810-47B0E25DC2EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B69B93D-F149-4FC1-9810-47B0E25DC2EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B69B93D-F149-4FC1-9810-47B0E25DC2EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CA4216E-37F8-41B0-8969-C27928069A44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CA4216E-37F8-41B0-8969-C27928069A44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CA4216E-37F8-41B0-8969-C27928069A44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CA4216E-37F8-41B0-8969-C27928069A44}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

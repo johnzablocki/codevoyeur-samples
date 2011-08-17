@@ -1,0 +1,17 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="MvcJQueryAutoComplete.Views.Shared.Site" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>jQuery MVC AutoComplete</title>
+    <link href="<%= ResolveUrl("~/Content/Styles/jquery.autocomplete.css") %>" rel="stylesheet" type="text/css" />
+    <script language="javascript" src="<%= ResolveUrl("~/Content/Scripts/jquery.js") %>"></script>
+    <script language="javascript" src="<%= ResolveUrl("~/Content/Scripts/jquery.autocomplete.js") %>"></script>
+</head>
+
+<body>
+     <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+
+   
+</body>
+</html>

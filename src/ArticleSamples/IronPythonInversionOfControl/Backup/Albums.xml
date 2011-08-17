@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<albums>
+  <album artist="Radiohead" title="Amnesiac" />
+  <album artist="Radiohead" title="In Rainbows" />      
+  <album artist="Radiohead" title="Hail to the Thief" />    
+  <album artist="Counting Crows" title="Saturday Nights &amp; Sunday Mornings" />
+  <album artist="Counting Crows" title="Recovering the Satellites" />
+  <album artist="Elvis Costello" title="My Aim is True" />
+  <album artist="Elvis Costello" title="Brutal Youth" />
+  <album artist="Elvis Costello" title="North" />
+  <album artist="Stone Temple Pilots" title="Core" />
+  <album artist="Sara Barellis" title="Little Voice" />
+  <album artist="The Beatles" title="Abbey Road" />
+  <album artist="The Beatles" title="White Album" />
+  <album artist="The Beatles" title="Revolver" />
+  <album artist="The Beatles" title="Sgt. Peppers Lonely Hearts Club Band" />
+  <album artist="The Shins" title="Wincing the Night Away" />
+  <album artist="The Shins" title="Chutes Too Narrow" />
+  <album artist="The Shins" title="Oh, Inverted World" />
+</albums>
