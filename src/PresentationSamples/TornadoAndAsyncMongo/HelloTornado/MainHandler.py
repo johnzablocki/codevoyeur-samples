@@ -3,7 +3,7 @@ import tornado.ioloop
 
 #Handlers must inherit from tornado.web.RequestHandler
 class MainHandler(tornado.web.RequestHandler):
-	
+
 	#post and get methods handle the respective HTTP verbs
 	def get(self):
 		self.write("Hello, Tornado World!")
