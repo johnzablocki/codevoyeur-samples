@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using NoRMQuickStart;
+using MongoDBQuickStart;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using MongoDB.Driver.Builders;
@@ -22,7 +22,7 @@ namespace MongoDBQuickStart {
             MongoServer mongoServer = MongoServer.Create("mongodb://localhost:27017");
             
             //MongoDatabase used to access MongoCollection instances
-            _mongoDatabase = mongoServer.GetDatabase("HealthcareSourceBrownBag");
+            _mongoDatabase = mongoServer.GetDatabase("fsug");
         }
 
         public static void Main() {
