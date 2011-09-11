@@ -44,7 +44,6 @@ let doCRUD =
     
 let main = 
     doSetup
-
-
+    doCRUD    
 
 main    
