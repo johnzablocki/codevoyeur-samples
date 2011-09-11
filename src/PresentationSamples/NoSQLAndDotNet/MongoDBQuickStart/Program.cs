@@ -22,11 +22,11 @@ namespace MongoDBQuickStart {
             MongoServer mongoServer = MongoServer.Create("mongodb://localhost:27017");
             
             //MongoDatabase used to access MongoCollection instances
-            _mongoDatabase = mongoServer.GetDatabase("fsug");
+            _mongoDatabase = mongoServer.GetDatabase("nyccodecamp");
         }
 
         public static void Main() {
-
+            
             try {
 
                 doSetup();
@@ -45,8 +45,6 @@ namespace MongoDBQuickStart {
                 Console.WriteLine(ex.Message);
             }
         }
-
-
 
         private static void doSetup() {
 
@@ -72,7 +70,6 @@ namespace MongoDBQuickStart {
                 Query.EQ("Name", "The Decemberists"),
                 Update.PushAll("Albums", "Castaways and Cutouts", "Picaresque", "Hazards of Love", "The Crane Wife")
             );
-            BsonValue
         }
 
         private static void doMoreCRUD() {
@@ -150,7 +147,7 @@ namespace MongoDBQuickStart {
             artists.Insert(new Artist() { Name = "Blind Pilot", Albums = new List<string>() { "3 Rounds and a Sound" } });
 
             BsonJavaScript reduce = @"function(obj, out) { out.count += obj.Albums.length; }";
-            var groupBy = _mongoDatabase.GetCollection<Artist>(COLLECTION).Group(Query.Null, GroupBy.Keys("Name"), new BsonDocument("count", 1), reduce, null);
+            var groupBy = _mongoDatabase.GetCollection<Artist>(COLLECTION).Group(Query.Null, GroupBy.Keys("Name"), new BsonDocument("count", 0), reduce, null);
 
             foreach (var item in groupBy) {
                 Console.WriteLine("{0}: {1} Album(s)", item.GetValue(0), item.GetValue(1));
