@@ -1,0 +1,10 @@
+Name: Lolcats.Caption
+AntiForgery: enabled
+Author: John Zablocki
+Website: http://dllhell.net
+Version: 1.0
+OrchardVersion: 1.0
+Description: Recaptioning module for Lolcats
+Features:
+    Lolcats.Caption:
+        Description: Recaptioning module for Lolcats

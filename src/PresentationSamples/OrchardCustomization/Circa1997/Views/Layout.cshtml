@@ -1,0 +1,38 @@
+﻿@{
+    Style.Include("Site.css");
+    Script.Include("Welcome.js");
+}
+
+ @if(Model.Navigation != null) {
+<div id="layout-navigation" class="group">
+    @Display(Model.Navigation)
+</div>
+}
+
+<div>
+    @Display(@Model.Content)
+</div>
+
+<div id="blink" style="visibility:hidden;">
+@Display(@Model.Blink)
+</div>
+
+<script language="javascript">
+        
+    function doBlink() {        
+        var blinkDiv = document.getElementById("blink");        
+        if (blinkDiv.style.visibility == 'hidden') {
+            blinkDiv.style.visibility = 'visible';
+        } else {
+            blinkDiv.style.visibility = 'hidden';
+        }    
+    }
+
+    window.setTimeout(doBlink, 2000);
+</script>
+
+<img src="@Href("~/Themes/Circa1997/Content/Images/dancingbaby.gif")" alt="Dancing Baby"/>
+
+<center>
+<img src="@Href("~/Themes/Circa1997/Content/Images/5consbar2_e0.gif")" alt="Demo Banner"/>
+</center>

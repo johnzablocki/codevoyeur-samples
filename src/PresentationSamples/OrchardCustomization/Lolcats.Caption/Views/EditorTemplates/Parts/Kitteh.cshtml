@@ -1,0 +1,37 @@
+﻿@model Lolcats.Caption.Models.KittehPart
+
+<fieldset>
+  <legend>Lolcats Caption Widget</legend>
+  
+  <div class="editor-label">
+    Image Source
+  </div>
+  <div class="editor-field">
+    @Html.TextBoxFor(model => model.ImageSource)
+    @Html.ValidationMessageFor(model => model.ImageSource)
+  </div>          
+
+  <div class="editor-label">
+    Text Top
+  </div>
+  <div class="editor-field">
+    @Html.TextBoxFor(model => model.TextTop)
+    @Html.ValidationMessageFor(model => model.TextTop)
+  </div>
+
+  <div class="editor-label">
+    Text Middle
+  </div>
+  <div class="editor-field">
+    @Html.TextBoxFor(model => model.TextMiddle)
+  </div>
+
+  <div class="editor-label">
+    Text bottom
+  </div>
+  <div class="editor-field">
+    @Html.TextBoxFor(model => model.TextBottom)
+    @Html.ValidationMessageFor(model => model.TextBottom)
+  </div>
+ 
+</fieldset>
