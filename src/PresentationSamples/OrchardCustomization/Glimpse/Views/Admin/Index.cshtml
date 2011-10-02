@@ -1,0 +1,17 @@
+﻿@model Glimpse.Models.GlimpseSettingsPart
+
+@using (Html.BeginForm("Save", "Admin", FormMethod.Post)) { 
+<fieldset>
+  <legend>Glimpse Settings</legend>
+  
+  <div class="editor-label">
+    @Html.LabelFor(model => model.IsEnabled)
+  </div>
+  <div class="editor-field">
+    @Html.CheckBoxFor(model => model.IsEnabled)    
+  </div>   
+  <div>
+     <button class="primaryAction" type="submit">@T("Save")</button>
+  </div>
+</fieldset>       
+}    
