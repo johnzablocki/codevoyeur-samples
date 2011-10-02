@@ -1,0 +1,11 @@
+Name: Glimpse
+AntiForgery: enabled
+Author: John Zablocki
+Website: http://dllhell.net
+Version: 0.1
+OrchardVersion: 0.1
+Description: A very basic Glimpse installation module.
+Category: Performance
+Features:
+    Glimpse:
+        Description: A very basic Glimpse installation module.
