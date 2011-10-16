@@ -10,16 +10,15 @@ namespace MongoDBQuickStart {
     public class Artist {
 
         //ObjectId property mapped to _id field in document
-        [BsonId]
         public ObjectId Id { get; set; }
 
         public string Name { get; set; }
 
         public int Ratings { get; set; }
 
-        private IList<decimal> _nextShowLocation = new List<decimal>(2);
+        private IList<double> _nextShowLocation = new List<double>(2);
 
-        public IList<decimal> NextShowLocation {
+        public IList<double> NextShowLocation {
             get { return _nextShowLocation; }
             set { _nextShowLocation = value; }
         }

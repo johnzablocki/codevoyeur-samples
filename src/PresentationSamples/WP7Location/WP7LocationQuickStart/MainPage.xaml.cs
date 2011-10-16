@@ -63,7 +63,7 @@ namespace WP7LocationQuickStart {
         void _watcher_PositionChanged(object sender, GeoPositionChangedEventArgs<GeoCoordinate> e) {
             MessageBox.Show(string.Format("New location detected\r\n {0}, {1}", e.Position.Location.Latitude, e.Position.Location.Longitude));
             SampleMap.Center = e.Position.Location;
-            SampleMap.ZoomLevel = 15;
+            SampleMap.ZoomLevel = 15;            
         }
     }
 }
