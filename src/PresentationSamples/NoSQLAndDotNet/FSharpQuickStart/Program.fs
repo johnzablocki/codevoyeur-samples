@@ -17,7 +17,7 @@ type Tag = { mutable Id : string; mutable Value : int }
 let mongoServer = MongoServer.Create("mongodb://localhost:27017")
 
 //MongoDatabase used to access MongoCollection instances
-let mongoDatabase = mongoServer.GetDatabase("FSUG");
+let mongoDatabase = mongoServer.GetDatabase("fsug");
  
 //reference the collection
 let mongoCollection = mongoDatabase.GetCollection<Artist>(COLLECTION)

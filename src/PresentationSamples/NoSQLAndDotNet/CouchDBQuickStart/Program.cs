@@ -13,7 +13,7 @@ namespace CouchDBQuickStart {
 
         private const string COLLECTION = "artists";
         private const string DESIGN_DOC = "artist";
-        private const string DATABASE = "vtcodecamp"; //database names cannot have uppercase characters
+        private const string DATABASE = "phillycodecamp"; //database names cannot have uppercase characters
 
         private static CouchClient _couchClient = null;
         private static CouchDatabase _couchDatabase = null;
@@ -60,7 +60,7 @@ namespace CouchDBQuickStart {
             if (_couchClient.HasDatabase(DATABASE)) {
                 _couchClient.DeleteDatabase(DATABASE);
             }
-
+            
             _couchClient.CreateDatabase(DATABASE);
         }
        
