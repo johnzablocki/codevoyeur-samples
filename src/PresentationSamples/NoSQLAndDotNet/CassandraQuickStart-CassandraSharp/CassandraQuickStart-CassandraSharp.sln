@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CassandraQuickStart-CassandraSharp", "CassandraQuickStart-CassandraSharp.csproj", "{D2AD61F9-7816-4538-8E71-B6B9F4218AEA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D2AD61F9-7816-4538-8E71-B6B9F4218AEA}.Debug|x86.ActiveCfg = Debug|x86
+		{D2AD61F9-7816-4538-8E71-B6B9F4218AEA}.Debug|x86.Build.0 = Debug|x86
+		{D2AD61F9-7816-4538-8E71-B6B9F4218AEA}.Release|x86.ActiveCfg = Release|x86
+		{D2AD61F9-7816-4538-8E71-B6B9F4218AEA}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
