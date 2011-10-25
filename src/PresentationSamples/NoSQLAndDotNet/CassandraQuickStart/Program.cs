@@ -77,9 +77,6 @@ namespace CassandraQuickStart {
 
                 dynamic savedArtist = colFamily.Get("radiohead").First();
                 Console.WriteLine((string)savedArtist.Details.Genre);
-
-
-
             }
         }
         
