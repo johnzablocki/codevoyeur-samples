@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocationTracker", "..\Locat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFinder", "..\CarFinder\CarFinder.csproj", "{62209F9A-29FB-4E40-B2E2-211E787DF8CB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NearMe", "..\NearMe\NearMe.csproj", "{B679ACB9-8C1A-4DBA-B303-F3D25206559F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,12 @@ Global
 		{62209F9A-29FB-4E40-B2E2-211E787DF8CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62209F9A-29FB-4E40-B2E2-211E787DF8CB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{62209F9A-29FB-4E40-B2E2-211E787DF8CB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B679ACB9-8C1A-4DBA-B303-F3D25206559F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B679ACB9-8C1A-4DBA-B303-F3D25206559F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B679ACB9-8C1A-4DBA-B303-F3D25206559F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B679ACB9-8C1A-4DBA-B303-F3D25206559F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B679ACB9-8C1A-4DBA-B303-F3D25206559F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B679ACB9-8C1A-4DBA-B303-F3D25206559F}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
