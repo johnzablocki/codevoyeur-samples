@@ -18,7 +18,7 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--Pivot Control-->
-        <controls:Pivot Title="MY APPLICATION">
+        <controls:Pivot Title="PARKING ASSISTANT">
             <!--Pivot item one-->
             <controls:PivotItem Header="parking spot">
                 <!--ContentPanel - place additional content here-->
@@ -33,7 +33,14 @@
  
             <!--Pivot item two-->
             <controls:PivotItem Header="history">
-                
+                <Grid x:Name="HistoryPanel" Grid.Row="1" Margin="12,0,12,0">
+                    <StackPanel>                        
+                        <Button x:Name="HistoryButton" Click="HistoryButton_Click" Content="Load History">
+                        </Button>
+                        <TextBlock x:Name="HistoryTextBox">
+                        </TextBlock>
+                    </StackPanel>
+                </Grid>
             </controls:PivotItem>
 
             <controls:PivotItem Header="settings">
