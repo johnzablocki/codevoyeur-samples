@@ -22,7 +22,7 @@ namespace MongoDBQuickStart {
             MongoServer mongoServer = MongoServer.Create("mongodb://localhost:27017");
             
             //MongoDatabase used to access MongoCollection instances
-            _mongoDatabase = mongoServer.GetDatabase("nyccodecamp");
+            _mongoDatabase = mongoServer.GetDatabase("walthamcodecamp");
         }
 
         public static void Main() {

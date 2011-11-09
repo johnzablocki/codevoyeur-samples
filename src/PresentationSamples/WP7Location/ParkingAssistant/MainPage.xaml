@@ -27,28 +27,37 @@
                     CredentialsProvider="At4Z1695E557xUQlOUnRA-hTlpwQ7croNwWWjpPekLJwOifpf1_FoEcBMlozuIiu"
                     ZoomLevel="10" ZoomBarVisibility="Visible">
                     </my:Map>
-                    <Button Content="Park" Height="86" HorizontalAlignment="Left" Margin="10,511,0,0" Name="ParkButton" VerticalAlignment="Top" Width="436" Click="ParkButton_Click"/>
+                    <Button Content="Park" Height="86" HorizontalAlignment="Left" Margin="0,511,0,0" Name="ParkButton" VerticalAlignment="Top" Width="436" Click="ParkButton_Click"/>
                 </Grid>
             </controls:PivotItem>
- 
+
             <!--Pivot item two-->
             <controls:PivotItem Header="history">
                 <Grid x:Name="HistoryPanel" Grid.Row="1" Margin="12,0,12,0">
-                    <StackPanel>                        
+                    <StackPanel>
                         <Button x:Name="HistoryButton" Click="HistoryButton_Click" Content="Load History">
                         </Button>
-                        <TextBlock x:Name="HistoryTextBox">
-                        </TextBlock>
+                        <ListBox x:Name="ItemsList" ItemsSource="{Binding}" FontSize="27" SelectionChanged="ListBox_SelectionChanged" Height="527">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Location[0]}"></TextBlock>
+                                            <TextBlock Text=", "></TextBlock>
+                                            <TextBlock Text="{Binding Location[1]}"></TextBlock>
+                                        </StackPanel>
+                                        <TextBlock Text="{Binding Ts}" FontSize="20" Margin="10,0,0,10"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                     </StackPanel>
                 </Grid>
             </controls:PivotItem>
 
-            <controls:PivotItem Header="settings">
-
-            </controls:PivotItem>
         </controls:Pivot>
     </Grid>
- 
+
     <!--Sample code showing usage of ApplicationBar-->
     <!--<phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">

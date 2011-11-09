@@ -9,16 +9,14 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Runtime.Serialization;
+using System.Collections.Generic;
 
 namespace ParkingAssistant.ViewModels
 {
-    [DataContract]
     public class ParkingSpot
     {
-        [DataMember]
-        public double Long { get; set; }
-        
-        [DataMember]
-        public double Lat { get; set; }        
+        public IList<float> Location { get; set; }
+
+        public DateTime Ts { get; set; }        
     }
 }

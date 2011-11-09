@@ -55,7 +55,7 @@ namespace CassandraQuickStart_CassandraSharp {
         private static void doColumnDef() {
 
             try {
-                _cluster.DropColumnFamily(COLUMN_FAMILY);
+                _cluster.DropColumnFamily(COLUMN_FAMILY);                
             } catch {
             }
 
@@ -84,7 +84,7 @@ namespace CassandraQuickStart_CassandraSharp {
         }
 
         private static void doTearDown() {
-            _cluster.Dispose();
+            _cluster.Dispose();            
         }
     }
 }

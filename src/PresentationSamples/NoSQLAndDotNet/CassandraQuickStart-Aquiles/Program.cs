@@ -54,7 +54,7 @@ namespace CassandraQuickStart_Aquiles {
                             Cf_defs = new List<CfDef>() };
 
             _cluster.Execute(new ExecutionBlock(c => { c.system_add_keyspace(ksDef); return null; }));
-            _cluster.Execute(new ExecutionBlock(c => { c.set_keyspace(KEYSPACE); return null; }));
+            _cluster.Execute(new ExecutionBlock(c => { c.set_keyspace(KEYSPACE); return null; }));            
         }
 
         private static void doColumnDef() {
