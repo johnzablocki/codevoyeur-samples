@@ -5,7 +5,6 @@ using System.IO;
 using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Net;
-using System.Runtime.Serialization.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -19,11 +18,11 @@ using Microsoft.Phone.Info;
 using Microsoft.Phone.Tasks;
 using System.Text;
 using ParkingAssistant.ViewModels;
+using Newtonsoft.Json;
+using System.Collections.ObjectModel;
 
-namespace ParkingAssistant
-{
-    public partial class MainPage : PhoneApplicationPage
-    {
+namespace ParkingAssistant {
+    public partial class MainPage : PhoneApplicationPage {
         private const int DEFAULT_ZOOM_LEVEL = 10;
         private const string HEROKU_APP_URL = "http://wp7location.herokuapp.com";
 
@@ -31,7 +30,7 @@ namespace ParkingAssistant
         private IsolatedStorageSettings _settings = IsolatedStorageSettings.ApplicationSettings;
         private readonly string _uniqueId;
 
-        
+
         // Constructor
         public MainPage() {
             InitializeComponent();
@@ -41,15 +40,12 @@ namespace ParkingAssistant
                 setPushPin(location);
             }
 
-            _uniqueId = getUniqueId();
-
+            _uniqueId = getUniqueId();            
         }
 
-        private string getUniqueId()
-        {
+        private string getUniqueId() {
             Guid uniqueId;
-            if (! _settings.TryGetValue<Guid>("UniqueId", out uniqueId))
-            {
+            if (!_settings.TryGetValue<Guid>("UniqueId", out uniqueId)) {
                 _settings["UniqueId"] = (uniqueId = Guid.NewGuid());
                 _settings.Save();
             }
@@ -57,7 +53,7 @@ namespace ParkingAssistant
             return uniqueId.ToString();
         }
 
-       
+
         protected void ParkButton_Click(object sender, RoutedEventArgs e) {
 
             _geoCoordinateWatcher = new GeoCoordinateWatcher();
@@ -66,8 +62,7 @@ namespace ParkingAssistant
             _geoCoordinateWatcher.Start();
         }
 
-        private void _geoCoordinateWatcher_PositionChanged(object sender, GeoPositionChangedEventArgs<GeoCoordinate> e)
-        {
+        private void _geoCoordinateWatcher_PositionChanged(object sender, GeoPositionChangedEventArgs<GeoCoordinate> e) {
             MessageBox.Show(string.Format("New position found: {2} {0}, {1}", e.Position.Location.Longitude, e.Position.Location.Latitude, Environment.NewLine));
             saveLastLocation(e.Position.Location);
             setPushPin(e.Position.Location);
@@ -75,8 +70,7 @@ namespace ParkingAssistant
             _geoCoordinateWatcher.Stop();
         }
 
-        private void saveLastLocation(GeoCoordinate location)
-        {
+        private void saveLastLocation(GeoCoordinate location) {
             _settings["Location"] = location;
             _settings.Save();
         }
@@ -98,48 +92,57 @@ namespace ParkingAssistant
             ParkingMap.ZoomLevel = DEFAULT_ZOOM_LEVEL;
         }
 
-        private void logLocation(GeoCoordinate location)
-        {
+        private void logLocation(GeoCoordinate location) {
             var postVars = string.Format("uid={0}&long={1}&lat={2}", _uniqueId, location.Longitude, location.Latitude);
             var request = WebRequest.CreateHttp(HEROKU_APP_URL);
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
 
-            request.BeginGetRequestStream(ar =>
-            {
+            request.BeginGetRequestStream(ar => {
                 var requestStream = request.EndGetRequestStream(ar);
-                using (var sw = new StreamWriter(requestStream))
-                {                    
+                using (var sw = new StreamWriter(requestStream)) {
                     sw.Write(postVars);
                 }
 
-                request.BeginGetResponse(a =>
-                {
+                request.BeginGetResponse(a => {
                     var response = request.EndGetResponse(a);
-                    
+
                 }, null);
 
             }, null);
 
         }
 
-        protected void HistoryButton_Click(object sender, RoutedEventArgs e)
-        {
+        protected void HistoryButton_Click(object sender, RoutedEventArgs e) {
             getRecent();
         }
 
-        private void getRecent()
-        {
-            var jsonParser = new DataContractJsonSerializer(typeof (ParkingSpot));
+        protected void ListBox_SelectionChanged(object sender, RoutedEventArgs e) {
+            var civicAddressResolver = new CivicAddressResolver();            
+        }
+
+        public ObservableCollection<ParkingSpot> Items { get; set; }
+
+        private void getRecent() {
             var client = new WebClient();
-            client.DownloadStringCompleted += (s, e) =>
-                                                  {                                                      
-                                                      HistoryTextBox.Text = e.Result.Replace("},{", Environment.NewLine);                                                      
+            client.DownloadStringCompleted += (s, e) => {
+                                                      var results = JsonConvert.DeserializeObject<IList<ParkingSpot>>(e.Result);
+                                                      Items = new ObservableCollection<ParkingSpot>(results.Take(10));
+                                                      ItemsList.DataContext = Items;                                                      
                                                   };
             client.DownloadStringAsync(new Uri(HEROKU_APP_URL + "/" + _uniqueId));
 
         }
 
-        
+        private string formatResults(IList<ParkingSpot> results) {
+
+            var sb = new StringBuilder();
+            foreach (var result in results) {
+                sb.AppendFormat("{0}", result.Location[0]);
+            }
+            return sb.ToString();
+        }
+
+
     }
 }

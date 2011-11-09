@@ -17,7 +17,7 @@ using System.Device.Location;
 namespace WP7LocationQuickStart {
     public partial class MainPage : PhoneApplicationPage {
 
-        private IGeoPositionWatcher<GeoCoordinate> _watcher;
+        private GeoCoordinateWatcher _watcher;
         
         // Constructor
         public MainPage() {
@@ -55,8 +55,8 @@ namespace WP7LocationQuickStart {
         }
 
         private void LocationButton_Click(object sender, RoutedEventArgs e) {
-            _watcher = new GpsEmulatorClient.GeoCoordinateWatcher();
-            _watcher.PositionChanged += new EventHandler<GeoPositionChangedEventArgs<GeoCoordinate>>(_watcher_PositionChanged);
+            _watcher = new GeoCoordinateWatcher() { MovementThreshold = 20 };            
+            _watcher.PositionChanged += new EventHandler<GeoPositionChangedEventArgs<GeoCoordinate>>(_watcher_PositionChanged);            
             _watcher.Start();
         }
 

@@ -66,7 +66,10 @@ namespace FwixPlaces.ViewModels
                 BeginDownload();
             }
                 
-            client.GetByLocation(latitude, longitude, client_RequestCompleteEventHandler, new Dictionary<string, object> { { "query", taxonomy }, {"categories", CategoryConstants.FOOD_BEVERAGE }});
+            client.GetByLocation(latitude, longitude, client_RequestCompleteEventHandler, 
+                new Dictionary<string, object> { 
+                    { "query", taxonomy }, 
+                    {"categories", CategoryConstants.FOOD_BEVERAGE + "," + CategoryConstants.GROCERIES}});
         }
 
         public void client_RequestCompleteEventHandler(IEnumerable<Place> places) {
