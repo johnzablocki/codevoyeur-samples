@@ -54,8 +54,18 @@
                     </StackPanel>
                 </Grid>
             </controls:PivotItem>
+            
+            <controls:PivotItem Header="settings">
+                <Grid Name="grid1" Margin="42,0,12,12" VerticalAlignment="Top">
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox x:Name="LiveTilesToggle" Checked="LiveTilesToggle_Checked" Height="107" />
+                        <TextBlock Text="Use live tiles" Height="49" />
+                    </StackPanel>
+                </Grid>
+            </controls:PivotItem>
 
         </controls:Pivot>
+       
     </Grid>
 
     <!--Sample code showing usage of ApplicationBar-->

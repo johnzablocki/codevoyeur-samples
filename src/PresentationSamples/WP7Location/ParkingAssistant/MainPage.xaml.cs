@@ -15,11 +15,13 @@ using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Controls.Maps;
 using Microsoft.Phone.Info;
+using Microsoft.Phone.Shell;
 using Microsoft.Phone.Tasks;
 using System.Text;
 using ParkingAssistant.ViewModels;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
+using Newtonsoft.Json.Linq;
 
 namespace ParkingAssistant {
     public partial class MainPage : PhoneApplicationPage {
@@ -28,7 +30,9 @@ namespace ParkingAssistant {
 
         private GeoCoordinateWatcher _geoCoordinateWatcher;
         private IsolatedStorageSettings _settings = IsolatedStorageSettings.ApplicationSettings;
+        private GeoCoordinate _lastPosition;
         private readonly string _uniqueId;
+        private const string MAP_CREDENTIALS = "At4Z1695E557xUQlOUnRA-hTlpwQ7croNwWWjpPekLJwOifpf1_FoEcBMlozuIiu";
 
 
         // Constructor
@@ -63,11 +67,12 @@ namespace ParkingAssistant {
         }
 
         private void _geoCoordinateWatcher_PositionChanged(object sender, GeoPositionChangedEventArgs<GeoCoordinate> e) {
-            MessageBox.Show(string.Format("New position found: {2} {0}, {1}", e.Position.Location.Longitude, e.Position.Location.Latitude, Environment.NewLine));
+            MessageBox.Show(string.Format("New position found: {2} {0}, {1}", e.Position.Location.Latitude, e.Position.Location.Longitude, Environment.NewLine));
             saveLastLocation(e.Position.Location);
             setPushPin(e.Position.Location);
             logLocation(e.Position.Location);
             _geoCoordinateWatcher.Stop();
+            _lastPosition = e.Position.Location;
         }
 
         private void saveLastLocation(GeoCoordinate location) {
@@ -98,7 +103,7 @@ namespace ParkingAssistant {
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
 
-            request.BeginGetRequestStream(ar => {
+            request.BeginGetRequestStream(ar => {  
                 var requestStream = request.EndGetRequestStream(ar);
                 using (var sw = new StreamWriter(requestStream)) {
                     sw.Write(postVars);
@@ -110,20 +115,48 @@ namespace ParkingAssistant {
                 }, null);
 
             }, null);
-
+                
         }
 
         protected void HistoryButton_Click(object sender, RoutedEventArgs e) {
-            getRecent();
+           getRecent();
         }
 
-        protected void ListBox_SelectionChanged(object sender, RoutedEventArgs e) {
-            var civicAddressResolver = new CivicAddressResolver();            
+        protected void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var parkingSpot = e.AddedItems[0] as ParkingSpot;
+            var url = "http://dev.virtualearth.net/REST/v1/Locations/" + parkingSpot.Location[0] + "," + parkingSpot.Location[1] + "?key=" + MAP_CREDENTIALS;
+            var client = new WebClient();
+            client.DownloadStringCompleted += (s, ea) =>
+                                                  {
+                                                      var obj = JsonConvert.DeserializeObject(ea.Result) as JObject;
+                                                      MessageBox.Show(obj.ToString());
+                                                  };
+            client.DownloadStringAsync(new Uri(url));
+        }
+
+        protected void LiveTilesToggle_Checked(object sender, RoutedEventArgs e) {
+            
+            var firstTile = ShellTile.ActiveTiles.First();
+            var checkBox = sender as CheckBox;
+
+            if (checkBox.IsChecked.HasValue && checkBox.IsChecked.Value == true)
+            {
+                _lastPosition = _lastPosition ?? new GeoCoordinate();
+                var tileData = new StandardTileData()
+                                   {
+                                       BackTitle = "Current Location",
+                                       BackContent = _lastPosition.Latitude + ", " + _lastPosition.Longitude
+                                       
+                                   };
+                firstTile.Update(tileData);
+            }
+
         }
 
         public ObservableCollection<ParkingSpot> Items { get; set; }
 
-        private void getRecent() {
+        private void getRecent() {  
             var client = new WebClient();
             client.DownloadStringCompleted += (s, e) => {
                                                       var results = JsonConvert.DeserializeObject<IList<ParkingSpot>>(e.Result);
